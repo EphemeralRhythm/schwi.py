@@ -1,0 +1,4 @@
+discord.py==2.1.1
+pymongo==4.3.3
+easy-pil==0.1.9
+Pillow==8.4.0
