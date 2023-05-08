@@ -35,18 +35,27 @@ class Levels(commands.Cog):
                 return
             xp = player_post.get("xp")
             
+            current_rank = "Novice"
+            for r in ranks:
+                if xp >= ranks[r]:
+                    current_rank = r
+        
             xp += 5 
-            if xp in ranks.values():
-                index = list(ranks.values()).index(xp)
-                rank = list(ranks.keys())[index]
+
+            next_rank = "Novice"
+            for r in ranks:
+                    if xp >= ranks[r]:
+                        next_rank = r
+
+            if next_rank != current_rank:
+                
                 ncnl = await self.client.fetch_guild(899204296275550249)
-                if rank != "Novice":
-                    prev_rank = list(ranks.keys())[index-1]
-                    prev_role = discord.utils.get(ncnl.roles, name = prev_rank)
-                    await message.author.remove_roles(prev_role)
-                    await message.channel.send(f"Congrats {message.author.mention}! You've leveled up to {rank}!")
-               
-                role = discord.utils.get(ncnl.roles, name = rank)
+                
+                prev_role = discord.utils.get(ncnl.roles, name = current_rank)
+                await message.author.remove_roles(prev_role)
+                await message.channel.send(f"Congrats {message.author.mention}! You've leveled up to {next_rank}!")
+            
+                role = discord.utils.get(ncnl.roles, name = next_rank)
                 await message.author.add_roles(role) 
                 
             filter = {"_id": player_post["_id"]}
