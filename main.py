@@ -8,7 +8,7 @@ logger = settings.logging.getLogger("bot")
 def run():
     intents = discord.Intents.all()
 
-    bot = commands.Bot(command_prefix="s!", intents=intents, help_command=None)
+    bot = commands.Bot(command_prefix=".", intents=intents, help_command=None)
 
     @bot.event
     async def on_ready():
