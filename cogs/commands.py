@@ -1,10 +1,10 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands import MemberConverter
-from utils import embed_color
-from PIL import Image, ImageDraw
-import database as db
+from PIL import Image
+import utils.database as db
+from utils.data import map_objects
 import time
+import utils.images
 
 
 class Commands(commands.Cog):
@@ -60,74 +60,39 @@ class Commands(commands.Cog):
         if y > size[1] - new_size[1] / 2:
             y = size[1] - new_size[1] / 2
         end_time_0 = time.time()
-        # draw all buildings
-        for building in db.buildings_collection.find():
-            b_x, b_y = building.get("x"), building.get("y")
+        # draw all map objects
+        for object in map_objects:
+            b_x, b_y = object[0], object[1]
 
+            object = map_objects[object]
+            size = object.get("size", (16, 16))
             if (
-                b_x * 16 < x - new_size[0] // 2 - 16
-                or b_x * 16 > x + new_size[0] // 2 + 16
-                or b_y * 16 < y - new_size[1] // 2 - 16
-                or b_y * 16 > y + new_size[1] // 2 + 16
+                b_x * 16 < x - new_size[0] // 2 - size[0]
+                or b_x * 16 > x + new_size[0] // 2 + size[0]
+                or b_y * 16 < y - new_size[1] // 2 - size[1]
+                or b_y * 16 > y + new_size[1] // 2 + size[1]
             ):
                 continue
-            race = building.get("race", "NPC")
+            object_type = object.get("type")
 
-            path = f"images/NCNL/{race}/{building.get('image')}.png"
+            if object_type == "building":
+                race = object.get("race", "NPC")
 
-            building_image = Image.open(path)
+                path = f"images/NCNL/{race}/{object.get('image')}.png"
+
+            elif object_type == "nature":
+                path = f"images/NCNL/Nature/{object.get('image')}.png"
+            else:
+                path = f"images/NCNL/Other/{object.get('image')}.png"
+
+            image = Image.open(path)
             map_image.paste(
-                building_image,
-                (b_x * 16, b_y * 16, b_x * 16 + 16, b_y * 16 + 16),
-                mask=building_image,
+                image,
+                (b_x * 16, b_y * 16, b_x * 16 + size[0], b_y * 16 + size[1]),
+                mask=image,
             )
-
         end_time_1 = time.time()
 
-        # draw nature
-        for object in db.nature_collection.find():
-            b_x, b_y = object.get("x"), object.get("y")
-
-            if (
-                b_x * 16 < x - new_size[0] // 2 - 16
-                or b_x * 16 > x + new_size[0] // 2 + 16
-                or b_y * 16 < y - new_size[1] // 2 - 16
-                or b_y * 16 > y + new_size[1] // 2 + 16
-            ):
-                continue
-
-            path = f"images/NCNL/Nature/{object.get('image')}.png"
-
-            object_image = Image.open(path)
-            map_image.paste(
-                object_image,
-                (b_x * 16, b_y * 16, b_x * 16 + 16, b_y * 16 + 16),
-                mask=object_image,
-            )
-
-        end_time_2 = time.time()
-        # draw loot
-        for object in db.loot_collection.find():
-            b_x, b_y = object.get("x"), object.get("y")
-
-            if (
-                b_x * 16 < x - new_size[0] // 2 - 16
-                or b_x * 16 > x + new_size[0] // 2 + 16
-                or b_y * 16 < y - new_size[1] // 2 - 16
-                or b_y * 16 > y + new_size[1] // 2 + 16
-            ):
-                continue
-
-            path = f"images/NCNL/Other/{object.get('image')}.png"
-
-            object_image = Image.open(path)
-            map_image.paste(
-                object_image,
-                (b_x * 16, b_y * 16, b_x * 16 + 16, b_y * 16 + 16),
-                mask=object_image,
-            )
-
-        end_time_3 = time.time()
         # draw units
         for unit in db.units_collection.find():
             u_x, u_y = unit.get("x"), unit.get("y")
@@ -181,7 +146,7 @@ class Commands(commands.Cog):
                     ),
                     mask=unit_image,
                 )
-        end_time_4 = time.time()
+        end_time_2 = time.time()
         cropped = map_image.crop(
             (
                 x - new_size[0] // 2,
@@ -191,24 +156,93 @@ class Commands(commands.Cog):
             )
         )
         cropped.save("images/NCNL/cropped.png")
-        end_time_5 = time.time()
+        end_time_3 = time.time()
 
         execution_time_0 = end_time_0 - start_time
         execution_time_1 = end_time_1 - end_time_0
         execution_time_2 = end_time_2 - end_time_1
         execution_time_3 = end_time_3 - end_time_2
-        execution_time_4 = end_time_4 - end_time_3
-        execution_time_5 = end_time_5 - end_time_4
 
         # Print the execution time of each block
         print(f"Image.open() Time: {execution_time_0:.6f} seconds")
-        print(f"Building Time: {execution_time_1:.6f} seconds")
-        print(f"Nature Time: {execution_time_2:.6f} seconds")
-        print(f"Loot Time: {execution_time_3:.6f} seconds")
-        print(f"Units Time: {execution_time_4:.6f} seconds")
-        print(f"Crop Time: {execution_time_5:.6f} seconds")
-        print(f"Total Time: {(start_time - end_time_5):.6f} seconds\n")
+        print(f"Map Time: {execution_time_1:.6f} seconds")
+        print(f"Units Time: {execution_time_2:.6f} seconds")
+        print(f"Crop Time: {execution_time_3:.6f} seconds")
+        print(f"Total Time: {(start_time - end_time_3):.6f} seconds\n")
         await ctx.send(file=discord.File("images/NCNL/cropped.png"))
+
+    @commands.command(name="test")
+    async def test(self, ctx, arg=None):
+        player_post = db.units_collection.find_one({"_id": ctx.author.id})
+
+        if player_post is None:
+            player_post = db.dead_collection.find_one({"_id": ctx.author.id})
+
+        if player_post is None:
+            await ctx.send("You are not a participant in the game system.")
+            return
+
+        if arg:
+            try:
+                unit_id = int(arg)
+            except ValueError:
+                await ctx.send("Invalid parameter.")
+                return
+
+            unit_post = db.units_collection.find_one(
+                {"_id": unit_id, "race": player_post.get("race")}
+            )
+
+            if unit_post is None:
+                await ctx.send("Unit not found.")
+                return
+        else:
+            if player_post.get("dead"):
+                await ctx.send("You are dead. L Bozo.")
+                return
+
+        unit_post = player_post
+
+        size = (6000, 6000)
+        new_size = (800, 800)
+        x, y = unit_post.get("x"), unit_post.get("y")
+
+        # set constraint for x and y boundaries
+        if x < new_size[0] / 2:
+            x = new_size[0] / 2
+        if x > size[0] - new_size[0] / 2:
+            x = size[0] - new_size[0] / 2
+        if y < new_size[1] / 2:
+            y = new_size[1] / 2
+        if y > size[1] - new_size[1] / 2:
+            y = size[1] - new_size[1] / 2
+
+        if player_post.get("race") == "Cyan":
+            map_image = utils.images.map_cyan
+        elif player_post.get("race") == "Red":
+            map_image = utils.images.map_red
+        elif player_post.get("race") == "Lime":
+            map_image = utils.images.map_lime
+        elif player_post.get("race") == "Admin":
+            map_image = utils.images.map_image
+        else:
+            await ctx.send("An error occured! Please contact <@660929334969761792>.")
+            return
+
+        if player_post.get("race") != "Admin":
+            cropped = map_image.crop(
+                (
+                    x - new_size[0] // 2,
+                    y - new_size[1] // 2,
+                    x + new_size[0] // 2,
+                    y + new_size[1] // 2,
+                )
+            )
+            cropped.save("images/NCNL/cropped.png")
+            await ctx.send(file=discord.File("images/NCNL/cropped.png"))
+        else:
+            map_image.save("images/NCNL/admin.png")
+            await ctx.send(file=discord.File("images/NCNL/admin.png"))
 
 
 async def setup(client):
