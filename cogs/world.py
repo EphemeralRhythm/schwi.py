@@ -1,188 +1,182 @@
-import discord
 from discord.ext import commands, tasks
-from PIL import Image, ImageDraw
 import utils.database as db
-from utils.data import map_objects, map_fog
 import time
-import utils.images
+import random
+import utils.data
+from utils.command_utils import update_command, astar, log, attack
+from utils.fog_of_war import diverge_search
+from utils.units_info import units as units_info
 
 ROWS = 375
 COLS = 375
-GAME_SPEED = 1
+GAME_SPEED = 10
 
 with open("map.txt", "r") as f:
     map_array = eval(f.read())
 
 
-def drawMap():
-    start_time = time.time()
-    map_image = Image.open("images/NCNL/map.png")
-
-    size = (6000, 6000)
-    end_time_0 = time.time()
-    # draw all map objects
-    for object in map_objects:
-        b_x, b_y = object[0], object[1]
-
-        object = map_objects[object]
-        size = object.get("size", (16, 16))
-        object_type = object.get("type")
-
-        if object_type == "building":
-            race = object.get("race", "NPC")
-
-            path = f"images/NCNL/{race}/{object.get('image')}.png"
-
-        elif object_type == "nature":
-            path = f"images/NCNL/Nature/{object.get('image')}.png"
-        else:
-            path = f"images/NCNL/Other/{object.get('image')}.png"
-
-        image = Image.open(path)
-        map_image.paste(
-            image,
-            (b_x * 16, b_y * 16, b_x * 16 + size[0], b_y * 16 + size[1]),
-            mask=image,
-        )
-        image.close()
-
-    end_time_1 = time.time()
-
-    # draw units
-    for unit in db.units_collection.find():
-        u_x, u_y = unit.get("x"), unit.get("y")
-
-        states = {-1: "attack", 0: "idle", 1: "move"}
-        race = unit.get("race")
-        name = unit.get("name")
-        if name == "Player":
-            name = unit.get("class")
-        state = states.get(unit.get("state"))
-        direction = unit.get("direction")
-
-        s = 32 if name == "Knight" else 16
-        path = f"images/NCNL/Units/{race}/{name}/{state}/{direction}.png"
-
-        unit_image = Image.open(path)
-        map_image.paste(
-            unit_image,
-            (
-                u_x - s // 2,
-                u_y - s // 2,
-                u_x + s // 2,
-                u_y + s // 2,
-            ),
-            mask=unit_image,
-        )
-
-        if name == "Lancer" and state == "attack":
-            dir = {"U": (0, -1), "D": (0, 1), "L": (-1, 0), "R": (1, 0)}
-            offset = dir.get(direction, (0, 0))
-            u_x += 16 * offset[0]
-            u_y += 16 * offset[1]
-
-            path = f"images/NCNL/Units/{race}/{name}/{state}/{direction}2.png"
-
-            unit_image = Image.open(path)
-            map_image.paste(
-                unit_image,
-                (
-                    u_x - s // 2,
-                    u_y - s // 2,
-                    u_x + s // 2,
-                    u_y + s // 2,
-                ),
-                mask=unit_image,
-            )
-
-            unit_image.close()
-
-    end_time_2 = time.time()
-
-    print("Started")
-    red_image = Image.new("RGBA", (6000, 6000), (0, 0, 0, 0))
-    red_fog = ImageDraw.Draw(red_image)
-
-    cyan_image = Image.new("RGBA", (6000, 6000), (0, 0, 0, 0))
-    cyan_fog = ImageDraw.Draw(cyan_image)
-
-    lime_image = Image.new("RGBA", (6000, 6000), (0, 0, 0, 0))
-    lime_fog = ImageDraw.Draw(lime_image)
-
-    for spot in map_fog:
-        x, y = spot
-
-        post = map_fog[spot]
-        if not post.get("cyan"):
-            cyan_fog.rounded_rectangle(
-                (
-                    x * 16,
-                    y * 16,
-                    x * 16 + 16,
-                    y * 16 + 16,
-                ),
-                fill=(0, 0, 0),
-            )
-
-        if not post.get("red"):
-            red_fog.rounded_rectangle(
-                (
-                    x * 16,
-                    y * 16,
-                    x * 16 + 16,
-                    y * 16 + 16,
-                ),
-                fill=(0, 0, 0),
-            )
-
-        if not post.get("lime"):
-            lime_fog.rounded_rectangle(
-                (
-                    x * 16,
-                    y * 16,
-                    x * 16 + 16,
-                    y * 16 + 16,
-                ),
-                fill=(0, 0, 0),
-            )
-    end_time_3 = time.time()
-
-    utils.images.map_cyan = Image.alpha_composite(map_image, cyan_image)
-    utils.images.map_red = Image.alpha_composite(map_image, red_image)
-    utils.images.map_lime = Image.alpha_composite(map_image, lime_image)
-    utils.images.map_image = map_image
-
-    end_time_4 = time.time()
-
-    execution_time_0 = end_time_0 - start_time
-    execution_time_1 = end_time_1 - end_time_0
-    execution_time_2 = end_time_2 - end_time_1
-    execution_time_3 = end_time_3 - end_time_2
-    execution_time_4 = end_time_4 - end_time_3
-
-    # Print the execution time of each block
-    print(f"Image.open() Time: {execution_time_0:.6f} seconds")
-    print(f"Map Time: {execution_time_1:.6f} seconds")
-    print(f"Units Time: {execution_time_2:.6f} seconds")
-    print(f"Fog Draw Time: {execution_time_3:.6f} seconds")
-    print(f"Alpha Time: {execution_time_4:.6f} seconds")
-    print(f"Total Time: {(start_time - end_time_4):.6f} seconds\n")
-
-
 class World(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.index = 0
+        self.index = 280
         self.game.start()
 
     def cog_unload(self):
         self.game.cancel()
 
-    @tasks.loop(minutes=GAME_SPEED)
+    @tasks.loop(seconds=GAME_SPEED)
     async def game(self):
         print("tick: ", self.index)
-        drawMap()
+
+        utils.data.game_time = self.index
+
+        start_time = time.time()
+
+        command_list = list(db.commands_collection.find())
+        command_hash = {}
+        for c in command_list:
+            command_hash[c.get("unit")] = c.get("command")
+
+        for unit in db.units_collection.find():
+            if target_id := utils.data.attacked_from.get(unit["_id"]):
+                if command_hash.get(unit["_id"]) == "attack":
+                    continue
+                utils.data.has_attacked.add(unit["_id"])
+                await attack(unit, target_id[0], client=self.client)
+
+        utils.data.attacked_from.clear()
+
+        random.shuffle(command_list)
+        for c in command_list:
+            if c.get("unit") in utils.data.has_attacked:
+                continue
+            await update_command(c, client=self.client)
+
+        utils.data.has_attacked.clear()
+
+        end_time_1 = time.time()
+        utils.data.dynamic_fog = {}
+        fog_updates = []
+
+        night_debuff = 0 if self.index < 180 else 2
+        for unit in db.units_collection.find():
+            x, y = unit.get("x"), unit.get("y")
+
+            tower_buff = 0
+            node_type = utils.data.map_arr[x // 16][y // 16]
+            if node_type == -1:
+                tower_buff = 2
+            sight = unit.get("sight", 8) + tower_buff - night_debuff
+            race = unit.get("race")
+
+            # create the dynamic fog of war
+            local_update = diverge_search(
+                (x // 16, y // 16),
+                sight,
+                race,
+                unit.get("direction"),
+                utils.data.dynamic_fog,
+                utils.data.map_fog,
+            )
+
+            fog_updates.extend(local_update)
+
+            # update units
+            update_map = {}
+            query = {"_id": unit["_id"]}
+            info_post = units_info.get(unit["name"])
+            if unit.get("recharge", 0) > 0:
+                update_map["recharge"] = 1
+
+            if not info_post:
+                max_hp = unit.get("max_hp", 0)
+            else:
+                max_hp = info_post["hitpoints"]
+            if unit.get("heal", 0) > 0:
+                update_map["heal"] = -1
+            elif unit.get("hp") < max_hp:
+                update_map["hp"] = 1
+            if update_map:
+                update = {"$inc": update_map, "$set": {"state": 0}}
+            else:
+                update = {"$set": {"state": 0}}
+            db.units_collection.update_one(query, update)
+
+        db.fog_collection.bulk_write(fog_updates)
+        end_time_2 = time.time()
+
+        for q in db.unit_queues.find():
+            db.unit_queues.update_one(
+                {"_id": q["_id"]}, {"$set": {"time": q["time"] - 1}}
+            )
+            if q.get("time") == 0:
+                db.unit_queues.delete_one({"_id": q["_id"]})
+
+                keys = ["time", "building"]
+                for k in keys:
+                    q.pop(k)
+
+                db.units_collection.insert_one(q)
+
+                await log(
+                    q.get("race"),
+                    "Unit Ready!",
+                    f"{q['name']} {q['_id']} is ready!",
+                    client=self.client,
+                    content=None,
+                )
         self.index += 1
+        if self.index >= 360:
+            self.index = 0
+        execution_time_1 = end_time_1 - start_time
+        execution_time_2 = end_time_2 - end_time_1
+        # print(f"Handling commands:{execution_time_1:.6f} seconds")
+        # print(f"World Fog Time: {execution_time_2:.6f} seconds")
+
+    @commands.command(name="set_time")
+    async def set_time(self, ctx, arg=0):
+        if ctx.author.id != 660929334969761792:
+            return
+
+        self.index = int(arg)
+
+        await ctx.send("✅")
+
+    @commands.command(name="set_tick_speed")
+    async def set_tick_speed(self, ctx, arg=0):
+        if ctx.author.id != 660929334969761792:
+            return
+        global GAME_SPEED
+        GAME_SPEED = int(arg)
+
+        await ctx.send("✅")
+
+    @commands.command(name="pathfind")
+    async def pathfind(self, ctx, *, args):
+        if not ctx.author.id == 660929334969761792:
+            return
+        player_post = db.units_collection.find_one({"_id": ctx.author.id})
+
+        if not player_post:
+            await ctx.send("Unit not found.")
+            return
+
+        if len(args.split(" ")) != 2:
+            await ctx.send("Invalid Vector Format")
+            return
+
+        i_x, i_y = player_post.get("x"), player_post.get("y")
+        x, y = args.split(" ")
+        try:
+            x, y = int(x), int(y)
+        except ValueError:
+            await ctx.send("Invalid Vector Format")
+            return
+        node_x = (i_x + x) // 16
+        node_y = (i_y + y) // 16
+        path = astar(node_x, node_y, player_post)
+
+        await ctx.send(path)
 
 
 async def setup(client):
