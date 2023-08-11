@@ -62,7 +62,7 @@ def diverge_search(
         d_x = i * direction[0]
         d_y = i * direction[1]
 
-        for j in range(i + 2):
+        for j in range(i + 3):
             pr_x = abs(direction[1])
             pr_y = abs(direction[0])
 

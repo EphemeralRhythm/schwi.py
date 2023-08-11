@@ -19,7 +19,7 @@ with open("map.txt", "r") as f:
 class World(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.index = 280
+        self.index = 1
         self.game.start()
 
     def cog_unload(self):
@@ -67,7 +67,9 @@ class World(commands.Cog):
             node_type = utils.data.map_arr[x // 16][y // 16]
             if node_type == -1:
                 tower_buff = 2
-            sight = unit.get("sight", 8) + tower_buff - night_debuff
+
+            info = units_info.get(unit["name"], {})
+            sight = unit.get("sight", info.get("sight")) + tower_buff - night_debuff
             race = unit.get("race")
 
             # create the dynamic fog of war

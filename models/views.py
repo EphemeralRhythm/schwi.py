@@ -432,7 +432,49 @@ class Unit_Select(discord.ui.Select):
                     )
                     await interaction.channel.send("Hopped on!")
                 return
+            if object.get("name") == "wheatfield":
+                if object.get("state") != 4:
+                    await interaction.response.send_message("Cannot harvest now!")
+                    return
 
+                await interaction.response.send_message(
+                    "Found wheat field."
+                    + "React with <:pickaxe:1101437961414905898> to harvest."
+                )
+
+                message = await interaction.original_response()
+                await message.add_reaction("<:pickaxe:1101437961414905898>")
+
+                def check_reaction(reaction, user):
+                    return (
+                        str(reaction.emoji) == "<:pickaxe:1101437961414905898>"
+                        and user == self.author
+                    )
+
+                timed_out = False
+                try:
+                    await interaction.client.wait_for(
+                        "reaction_add", check=check_reaction, timeout=10
+                    )
+                except asyncio.TimeoutError:
+                    timed_out = True
+                if not timed_out:
+                    index = utils.data.wheat_fields.index(object)
+
+                    if index != -1:
+                        utils.data.wheat_fields.pop(index)
+                    utils.data.map_objects.pop((o_x // 16, o_y // 16))
+                    db.map_collection.delete_one({"_id": object["_id"]})
+
+                    db.units_collection.update_one(
+                        {"_id": self.unit["_id"]}, {"$inc": {"wheat": 20 * 20}}
+                    )
+
+                    await interaction.channel.send(
+                        "Successfully harversted from the wheatfield!"
+                    )
+
+                    return
             if "Tree" in object.get("name"):
                 await interaction.response.send_message(
                     f"Found {object.get('name')}. "
@@ -467,6 +509,9 @@ class Unit_Select(discord.ui.Select):
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
         elif self.values[0] == "Plant":
+            if self.unit.get("seeds", 0) < 20:
+                await interaction.response.send_message("Insufficient resources.")
+                return
             if self.unit.get("boat"):
                 await interaction.response.send_message("Can't plant while in water.")
                 return
@@ -488,6 +533,7 @@ class Unit_Select(discord.ui.Select):
             if utils.data.map_objects.get((o_x, o_y)):
                 await interaction.response.send_message("Can't plant here.")
                 return
+            await interaction.response.send_message("Planted!")
             post = {
                 "_id": f"{o_x}-{o_y}",
                 "name": "wheatfield",

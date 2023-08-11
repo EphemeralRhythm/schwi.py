@@ -245,6 +245,7 @@ class Commands(commands.Cog):
             inv = True
 
         items = [
+            "seeds",
             "wheat",
             "cod",
             "salmon",
