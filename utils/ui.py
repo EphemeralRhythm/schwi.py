@@ -143,7 +143,9 @@ def draw_map(player_post, unit_post, transparent=None):
             object_type = object.get("type")
             size = object.get("size", (16, 16))
 
-            if object_type == "building":
+            if object["name"] == "wheatfield":
+                path = f"images/NCNL/Nature/Wheafield{object['state']}.png"
+            elif object_type == "building":
                 race = object.get("race", "NPC")
 
                 path = f"images/NCNL/{race}/{object.get('image')}.png"

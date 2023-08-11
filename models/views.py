@@ -474,16 +474,30 @@ class Unit_Select(discord.ui.Select):
             dir_map = {"U": (0, -1), "D": (0, 1), "R": (1, 0), "L": (-1, 0)}
 
             dir_int = dir_map[dir]
-            o_x = x + dir_int[0] * 16
-            o_y = y + dir_int[1] * 16
+            o_x = (x + dir_int[0] * 16) // 16
+            o_y = (y + dir_int[1] * 16) // 16
 
-            node = utils.data.map_arr[o_x // 16][o_y // 16]
+            node = utils.data.map_arr[o_x][o_y]
 
             if node != 1:
                 await interaction.response.send_message(
                     "Can't plant seeds in a water node."
                 )
                 return
+
+            if utils.data.map_objects.get((o_x, o_y)):
+                await interaction.response.send_message("Can't plant here.")
+                return
+            post = {
+                "_id": f"{o_x}-{o_y}",
+                "name": "wheatfield",
+                "type": "nature",
+                "state": 1,
+            }
+
+            db.map_collection.insert_one(post)
+            utils.data.wheat_fields.append(post)
+            utils.data.map_objects[(o_x, o_y)] = post
 
 
 class Pings_Select(discord.ui.Select):

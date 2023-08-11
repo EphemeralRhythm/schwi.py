@@ -18,6 +18,9 @@ for object in db.map_collection.find():
 
     map_objects[(x, y)] = object
 
+    if object["name"] == "wheatfield":
+        wheat_fields.append(object)
+
 for building in db.buildings_collection.find():
     x, y = building["_id"].split("-")
     x, y = int(x), int(y)
