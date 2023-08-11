@@ -9,7 +9,7 @@ map_objects = {}
 map_fog = {}
 map_walls = {}
 dynamic_fog = {}
-
+wheat_fields = []
 game_time = 0
 
 for object in db.map_collection.find():

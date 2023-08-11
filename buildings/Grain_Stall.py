@@ -12,6 +12,7 @@ from utils.database import (
 import utils.data
 
 hay_bale = "<:hay:1136684958346399775>"
+seeds = "<:seeds:1139516070869352499>"
 color = discord.Color.from_rgb(201, 0, 118)
 
 
@@ -24,18 +25,20 @@ class Grain_Stall(discord.ui.View):
 
         embed = discord.Embed(color=color, title="Grain Stall")
         stock = building.get("stock", 0)
+        seeds_amount = building.get("seeds", 0)
+
         description = (
             "<:Grain_Stall:1136661559708483615> "
             + info["Grain Stall"]["Description"]
             + f"\n\n** * Selling Price:** 20 {hay_bale} -> 5 {resources['gold']}"
-            + f"\n** * Buying Price:** 10 {resources['gold']} -> 20 {hay_bale}"
-            + f"\n** * Currently Stored:** {stock} {hay_bale}"
+            + f"\n** * Buying Price:** 1 {resources['gold']} -> 100 {seeds}"
+            + f"\n** * Currently Stored:** {stock} {hay_bale} {seeds_amount} {seeds}"
         )
 
         embed.description = description
         self.embed = embed
 
-    @discord.ui.button(label="Buy Wheat")
+    @discord.ui.button(label="Buy Seeds")
     async def buy(self, interaction: discord.Interaction, item):
         if interaction.user.id != self.author.id:
             await interaction.response.send_message(
@@ -72,10 +75,9 @@ class Grain_Stall(discord.ui.View):
             return
 
         message = await interaction.channel.send(
-            f"Purchase {amount} * 20 {hay_bale} for {amount * 10} {resources['gold']}?"
+            f"Purchase {amount} * 100 {seeds} for {amount} {resources['gold']}?"
         )
 
-        amount *= 10
         await message.add_reaction("✅")
 
         def check_reaction(reaction, user):
@@ -108,18 +110,20 @@ class Grain_Stall(discord.ui.View):
 
             resources_collection.update_one(filter, update)
 
-        stock = self.building.get("stock", 0)
-        stock += amount * 2
+        stock = self.building.get("seeds", 0)
+        stock += amount * 100
 
         buildings_collection.update_one(
-            {"_id": self.building["_id"]}, {"$set": {"stock": stock}}
+            {"_id": self.building["_id"]}, {"$set": {"seeds": stock}}
         )
-        self.building["stock"] = stock
+        self.building["seeds"] = stock
         x, y = self.building["_id"].split("-")
         x, y = int(x), int(y)
 
         utils.data.map_objects[(x, y)] = self.building
-        await interaction.channel.send(f"Successfully purchased {amount} {hay_bale}.")
+        await interaction.channel.send(
+            f"Successfully purchased {amount} * 100 {seeds}."
+        )
 
     @discord.ui.button(label="Sell Wheat")
     async def sell(self, interaction: discord.Interaction, item):
@@ -196,87 +200,6 @@ class Grain_Stall(discord.ui.View):
 
             await interaction.channel.send(f"Successfully sold {amount} {hay_bale}")
 
-    @discord.ui.button(label="Store")
-    async def store(self, interaction: discord.Interaction, item):
-        if interaction.user.id != self.author.id:
-            await interaction.response.send_message(
-                "Interaction failed."
-                + "The command author is not the same as the interaction author."
-            )
-            return
-
-        self.stop()
-        if self.unit["name"] != "Worker":
-            await interaction.response.send_message(
-                "Only workers can withdraw and store hay."
-            )
-            return
-        await interaction.response.send_message(
-            "Enter the amount that you want to store."
-        )
-        if not isinstance(interaction.channel, discord.TextChannel) and not isinstance(
-            interaction.channel, discord.threads.Thread
-        ):
-            print("Failed to send, channel type: ", type(interaction.channel))
-            return
-
-        def check(m):
-            return m.channel == interaction.channel and m.author == self.author
-
-        try:
-            arg = await interaction.client.wait_for("message", check=check, timeout=20)
-        except asyncio.TimeoutError:
-            return
-        try:
-            amount = int(arg.content)
-        except ValueError:
-            await interaction.channel.send("Amount entered must be an integer.")
-            return
-
-        if amount <= 0:
-            await interaction.channel.send("Amount entered must be positive.")
-            return
-
-        message = await interaction.channel.send(f"Store {amount} * 20 {hay_bale}?")
-
-        await message.add_reaction("✅")
-
-        def check_reaction(reaction, user):
-            return str(reaction.emoji) == "✅" and user == self.author
-
-        timed_out = False
-        try:
-            await interaction.client.wait_for(
-                "reaction_add", check=check_reaction, timeout=20
-            )
-        except asyncio.TimeoutError:
-            timed_out = True
-        if not timed_out:
-            unit_stock = self.unit.get("wheat", 0)
-
-            if amount * 20 > unit_stock:
-                await interaction.channel.send("Insufficient resources.")
-                return
-            units_collection.update_one(
-                {"_id": self.unit["_id"]}, {"$inc": {"wheat": -20 * amount}}
-            )
-
-            stock = self.building.get("stock", 0)
-            stock += amount * 20
-
-            buildings_collection.update_one(
-                {"_id": self.building["_id"]}, {"$set": {"stock": stock}}
-            )
-            self.building["stock"] = stock
-            x, y = self.building["_id"].split("-")
-            x, y = int(x), int(y)
-
-            utils.data.map_objects[(x, y)] = self.building
-
-            await interaction.channel.send(
-                f"Successfully stored {amount} * 20 {hay_bale}."
-            )
-
     @discord.ui.button(label="Withdraw")
     async def withdraw(self, interaction: discord.Interaction, item):
         if interaction.user.id != self.author.id:
@@ -288,9 +211,7 @@ class Grain_Stall(discord.ui.View):
 
         self.stop()
         if self.unit["name"] != "Worker":
-            await interaction.response.send_message(
-                "Only workers can withdraw and store wheat."
-            )
+            await interaction.response.send_message("Only workers can withdraw seeds.")
             return
         await interaction.response.send_message(
             "Enter the amount that you want to withdraw."
@@ -318,7 +239,7 @@ class Grain_Stall(discord.ui.View):
             await interaction.channel.send("Amount entered must be positive.")
             return
 
-        message = await interaction.channel.send(f"Withdraw {amount} * 20 {hay_bale}?")
+        message = await interaction.channel.send(f"Withdraw {amount} * 100 {seeds}?")
 
         await message.add_reaction("✅")
 
@@ -333,28 +254,28 @@ class Grain_Stall(discord.ui.View):
         except asyncio.TimeoutError:
             timed_out = True
         if not timed_out:
-            stock = self.building.get("stock", 0)
+            stock = self.building.get("seeds", 0)
 
-            if amount * 20 > stock:
+            if amount * 100 > stock:
                 await interaction.channel.send("Insufficient resources.")
                 return
 
             units_collection.update_one(
-                {"_id": self.unit["_id"]}, {"$inc": {"wheat": 20 * amount}}
+                {"_id": self.unit["_id"]}, {"$inc": {"seeds": 100 * amount}}
             )
 
-            stock = self.building.get("stock", 0)
-            stock -= amount * 20
+            stock = self.building.get("seeds", 0)
+            stock -= amount * 100
 
             buildings_collection.update_one(
-                {"_id": self.building["_id"]}, {"$set": {"stock": stock}}
+                {"_id": self.building["_id"]}, {"$set": {"seeds": stock}}
             )
-            self.building["stock"] = stock
+            self.building["seeds"] = stock
             x, y = self.building["_id"].split("-")
             x, y = int(x), int(y)
 
             utils.data.map_objects[(x, y)] = self.building
 
             await interaction.channel.send(
-                f"Successfully withdrew {amount} * 20 {hay_bale}."
+                f"Successfully withdrew {amount} * 100 {seeds}."
             )

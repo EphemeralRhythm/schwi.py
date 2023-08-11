@@ -6,6 +6,7 @@ import utils.data
 from utils.command_utils import update_command, astar, log, attack
 from utils.fog_of_war import diverge_search
 from utils.units_info import units as units_info
+from pymongo import UpdateOne
 
 ROWS = 375
 COLS = 375
@@ -127,6 +128,16 @@ class World(commands.Cog):
                 )
         self.index += 1
         if self.index >= 360:
+            updates = []
+            for field in utils.data.wheat_fields:
+                if field["state"] < 4:
+                    field["state"] += 1
+                    query = {"_id": field["_id"]}
+                    update = {"state": field["state"]}
+
+                    updates.append(UpdateOne(query, update))
+
+            db.map_collection.bulk_write(fog_updates)
             self.index = 0
         execution_time_1 = end_time_1 - start_time
         execution_time_2 = end_time_2 - end_time_1

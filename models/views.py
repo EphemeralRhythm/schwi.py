@@ -78,6 +78,13 @@ class Unit_Select(discord.ui.Select):
                 )
             )
 
+            options.append(
+                discord.SelectOption(
+                    label="Plant",
+                    emoji="<:seeds:1139516070869352499>",
+                    description="Plant seeds.",
+                )
+            )
         super().__init__(
             placeholder="Select your command",
             max_values=1,
@@ -459,6 +466,24 @@ class Unit_Select(discord.ui.Select):
 
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
+        elif self.values[0] == "Plant":
+            if self.unit.get("boat"):
+                await interaction.response.send_message("Can't plant while in water.")
+                return
+            dir = self.unit.get("direction", "U")
+            dir_map = {"U": (0, -1), "D": (0, 1), "R": (1, 0), "L": (-1, 0)}
+
+            dir_int = dir_map[dir]
+            o_x = x + dir_int[0] * 16
+            o_y = y + dir_int[1] * 16
+
+            node = utils.data.map_arr[o_x // 16][o_y // 16]
+
+            if node != 1:
+                await interaction.response.send_message(
+                    "Can't plant seeds in a water node."
+                )
+                return
 
 
 class Pings_Select(discord.ui.Select):
