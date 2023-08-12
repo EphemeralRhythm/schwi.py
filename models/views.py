@@ -544,6 +544,9 @@ class Unit_Select(discord.ui.Select):
             db.map_collection.insert_one(post)
             utils.data.wheat_fields.append(post)
             utils.data.map_objects[(o_x, o_y)] = post
+            db.units_collection.update_one(
+                {"_id": self.unit["_id"]}, {"$inc": {"seeds": -20}}
+            )
 
 
 class Pings_Select(discord.ui.Select):

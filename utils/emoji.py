@@ -14,6 +14,7 @@ items = {
     "cod": "<:cod:1136730585272955021>",
     "salmon": "<:salmon:1136730583586848849>",
     "tropical_fish": "<:tropicalFish:1136730580340441208>",
+    "seeds": "<:seeds:1139516070869352499>",
 }
 
 troops_emoji = {
