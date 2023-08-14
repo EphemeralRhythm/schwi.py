@@ -508,6 +508,7 @@ class Unit_Select(discord.ui.Select):
 
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
+
         elif self.values[0] == "Plant":
             if self.unit.get("seeds", 0) < 20:
                 await interaction.response.send_message("Insufficient resources.")
