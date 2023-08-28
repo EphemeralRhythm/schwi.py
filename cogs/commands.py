@@ -225,13 +225,16 @@ class Commands(commands.Cog):
                 return
 
             unit_post = player_post
-        if unit_post.get("name") == "Player":
-            unit_post["_id"] = f"<@{unit_post['_id']}>"
 
         embed = discord.Embed(
             color=discord.Color.from_rgb(201, 0, 118),
         )
-        description = f"**{unit_post['name']} {unit_post['_id']}**\n\n"
+        _id = (
+            unit_post["_id"]
+            if unit_post["name"] != "player"
+            else f"<@{unit_post['_id']}>"
+        )
+        description = f"**{unit_post['name']} {_id}**\n\n"
         if cl := unit_post.get("class"):
             description += f"* **Class:** {cl}\n\n"
 
@@ -264,15 +267,14 @@ class Commands(commands.Cog):
                 description += f" * {amount} {emoji}\n"
 
         description += "\n"
-        _id = unit_post["_id"] if unit_post["name"] != "Player" else player_post["_id"]
-        command = db.commands_collection.find_one({"unit": _id})
+        command = db.commands_collection.find_one({"unit": unit_post["_id"]})
         if command:
             description += "* **Command:** \n"
             match command["command"]:
                 case "move":
                     f_x, f_y = command.get("x"), command.get("y")
                     x, y = unit_post.get("x"), unit_post.get("y")
-                    description += f"Move: ({f_x - x, f_y - y})"
+                    description += f"Move: ({f_x - x}, {f_y - y})"
                 case "attack":
                     target = db.units_collection.find_one({"_id": command["target"]})
                     description += f"Attack: {target['name']}"
@@ -321,7 +323,7 @@ class Commands(commands.Cog):
                     case "move":
                         f_x, f_y = command.get("x"), command.get("y")
                         x, y = unit.get("x"), unit.get("y")
-                        description += f"Move: ({f_x - x, f_y - y})"
+                        description += f"Move: ({f_x - x}, {f_y - y})"
                     case "attack":
                         target = db.units_collection.find_one(
                             {"_id": command["target"]}

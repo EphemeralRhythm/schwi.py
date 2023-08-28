@@ -118,10 +118,7 @@ class Admin(commands.Cog):
             return
         file_path = "logs/infos.log"
 
-        with open(file_path, "rb") as file:
-            file_data = discord.File(file)
-
-        await ctx.send(File=file_data)
+        await ctx.send(file=discord.File(file_path))
 
     @commands.command(name="create")
     async def create(self, ctx):
