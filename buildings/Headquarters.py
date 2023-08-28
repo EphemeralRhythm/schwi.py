@@ -133,7 +133,7 @@ class HQ_Select(discord.ui.Select):
         await interaction.response.send_message("Unit added to queue!")
 
 
-class Docks(discord.ui.View):
+class Headquarters(discord.ui.View):
     def __init__(self, author, unit, building, *, timeout: Optional[float] = 40):
         super().__init__(timeout=timeout)
         self.author = author
