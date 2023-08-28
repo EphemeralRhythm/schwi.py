@@ -121,7 +121,7 @@ class Admin(commands.Cog):
         with open(file_path, "rb") as file:
             file_data = discord.File(file)
 
-        await ctx.send(File=file_data)
+        await ctx.send(file=file_data)
 
     @commands.command(name="create")
     async def create(self, ctx):
