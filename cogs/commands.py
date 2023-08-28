@@ -444,6 +444,47 @@ class Commands(commands.Cog):
         embed.description = description
         await ctx.send(embed=embed)
 
+    @commands.command(name="wood")
+    async def wood(self, ctx, arg=None):
+        dead = False
+        player_post = db.units_collection.find_one({"_id": ctx.author.id})
+
+        if not player_post:
+            player_post = db.dead_collection.find_one({"_id": ctx.author.id})
+            dead = True
+
+        if not player_post:
+            await ctx.send("You are not a participant in the game system.")
+            return
+
+        if dead and not arg:
+            await ctx.send("You are dead. L bozo")
+            return
+
+        if arg:
+            unit = db.units_collection.find_one(
+                {"_id": int(arg), "race": player_post.get("race")}
+            )
+            if not unit:
+                await ctx.send("Unit not found")
+                return
+            if not unit.get("owner") == ctx.author.id:
+                await ctx.send("You don't have permission to control this unit.")
+                return
+        else:
+            unit = player_post
+
+        filter = {"unit": unit["_id"]}
+        unit = db.units_collection.find_one(filter)
+
+        if not unit.get("wood"):
+            await ctx.send(f"{unit['name']} {unit['_id']} doesn't have any wood.")
+            return
+        db.units_collection.update_one(
+            {"_id": ctx.author.id}, {"$inc": {"wood": unit.get("wood")}}
+        )
+        db.units_collection.update_one({"_id": unit["_id"]}, {"$set": {"wood": 0}})
+
 
 async def setup(client):
     await client.add_cog(Commands(client))
