@@ -117,15 +117,9 @@ class Admin(commands.Cog):
         if ctx.author.id != 660929334969761792:
             return
         file_path = "logs/infos.log"
-
-<<<<<<< HEAD
-        await ctx.send(file=discord.File(file_path))
-=======
         with open(file_path, "rb") as file:
             file_data = discord.File(file)
-
         await ctx.send(file=file_data)
->>>>>>> 407da4aabc02b89130b3413fb098592b53655978
 
     @commands.command(name="create")
     async def create(self, ctx):
