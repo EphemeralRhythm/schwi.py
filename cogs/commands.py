@@ -401,10 +401,6 @@ class Commands(commands.Cog):
         if ctx.author in role.members:
             isLeader = True
 
-        if not unit.get("owner"):
-            await ctx.send("Can't reassign player units.")
-            return
-
         if not unit.get("owner") == ctx.author.id and not isLeader:
             await ctx.send("You don't have permission to command this unit.")
             return
