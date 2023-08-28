@@ -401,45 +401,48 @@ class Unit_Select(discord.ui.Select):
                 boats = db.units_collection.find(query)
 
                 sorted_units = sorted(boats, key=lambda x: locate_unit(x))
+                if sorted_units:
+                    if locate_unit(sorted_units[0]) > 32:
+                        await interaction.response.send_message(
+                            "No nearby objects found."
+                        )
+                        return
 
-                if locate_unit(sorted_units[0]) > 32:
-                    await interaction.response.send_message("No nearby objects found.")
-                    return
-
-                await interaction.response.send_message(
-                    f"Found {sorted_units[0]['name']}. "
-                    + "React with ✅ to hop on board!"
-                )
-                message = await interaction.original_response()
-                await message.add_reaction("✅")
-
-                def check_reaction(reaction, user):
-                    return str(reaction.emoji) == "✅" and user == self.author
-
-                timed_out = False
-                try:
-                    await interaction.client.wait_for(
-                        "reaction_add", check=check_reaction, timeout=10
+                    await interaction.response.send_message(
+                        f"Found {sorted_units[0]['name']}. "
+                        + "React with ✅ to hop on board!"
                     )
-                except asyncio.TimeoutError:
-                    timed_out = True
-                if not timed_out:
-                    db.units_collection.update_one(
-                        {"_id": self.unit["_id"]},
-                        {
-                            "$set": {
-                                "boat": sorted_units[0]["_id"],
-                                "x": sorted_units[0]["x"],
-                                "y": sorted_units[0]["y"] - 8,
-                            }
-                        },
-                    )
-                    db.units_collection.update_one(
-                        {"_id": sorted_units[0]["_id"]},
-                        {"$set": {"unit": self.unit["_id"]}},
-                    )
-                    await interaction.channel.send("Hopped on!")
+                    message = await interaction.original_response()
+                    await message.add_reaction("✅")
+
+                    def check_reaction(reaction, user):
+                        return str(reaction.emoji) == "✅" and user == self.author
+
+                    timed_out = False
+                    try:
+                        await interaction.client.wait_for(
+                            "reaction_add", check=check_reaction, timeout=10
+                        )
+                    except asyncio.TimeoutError:
+                        timed_out = True
+                    if not timed_out:
+                        db.units_collection.update_one(
+                            {"_id": self.unit["_id"]},
+                            {
+                                "$set": {
+                                    "boat": sorted_units[0]["_id"],
+                                    "x": sorted_units[0]["x"],
+                                    "y": sorted_units[0]["y"] - 8,
+                                }
+                            },
+                        )
+                        db.units_collection.update_one(
+                            {"_id": sorted_units[0]["_id"]},
+                            {"$set": {"unit": self.unit["_id"]}},
+                        )
+                        await interaction.channel.send("Hopped on!")
                 return
+
             if object.get("name") == "wheatfield":
                 if object.get("state") != 4:
                     await interaction.response.send_message("Cannot harvest now!")
