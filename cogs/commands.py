@@ -315,7 +315,7 @@ class Commands(commands.Cog):
 
         query = {"race": race}
         for unit in db.units_collection.find(query):
-            command = db.commands_collection.find_one({"_id": unit["_id"]})
+            command = db.commands_collection.find_one({"unit": unit["_id"]})
 
             if command:
                 description += f"* **{unit.get('name')} {unit['_id']}:** \n"
