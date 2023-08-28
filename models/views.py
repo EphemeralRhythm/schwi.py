@@ -386,6 +386,7 @@ class Unit_Select(discord.ui.Select):
                 )
 
                 await interaction.response.send_message("Hopped off!")
+                return
             object = utils.data.map_objects.get((o_x // 16, o_y // 16))
 
             if not object:
@@ -441,8 +442,10 @@ class Unit_Select(discord.ui.Select):
                             {"$set": {"unit": self.unit["_id"]}},
                         )
                         await interaction.channel.send("Hopped on!")
+                    return
+            if not object:
+                await interaction.response.send_message("No nearby objects found.")
                 return
-
             if object.get("name") == "wheatfield":
                 if object.get("state") != 4:
                     await interaction.response.send_message("Cannot harvest now!")

@@ -18,6 +18,7 @@ items = {
 }
 
 troops_emoji = {
+    "Worker": "<:Worker:1134909155837214763>",
     "Scout": "<:Scout:1134921578853970031>",
     "Swordsman": "<:Swordsman:1134043282423418951>",
     "Archer": "<:Archer:1134041031680196721>",

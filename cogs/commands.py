@@ -348,7 +348,7 @@ class Commands(commands.Cog):
                         description += f"Build: {name} ({time} minutes left)"
                     case other:
                         description += str(other)
-        color = (discord.Color.from_rgb(201, 0, 118),)
+        color = discord.Color.from_rgb(201, 0, 118)
         embed = discord.Embed(
             color=color, title="All Units Status", description=description
         )
