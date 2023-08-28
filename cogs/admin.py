@@ -112,6 +112,17 @@ class Admin(commands.Cog):
         embed.description = description
         await embed_mess.edit(embed=embed)
 
+    @commands.command(name="logs")
+    async def logs(self, ctx):
+        if ctx.author.id != 660929334969761792:
+            return
+        file_path = "logs/infos.log"
+
+        with open(file_path, "rb") as file:
+            file_data = discord.File(file)
+
+        await ctx.send(File=file_data)
+
     @commands.command(name="create")
     async def create(self, ctx):
         if ctx.author.id != 660929334969761792:
