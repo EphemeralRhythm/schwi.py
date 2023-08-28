@@ -5,6 +5,7 @@ from buildings.Grain_Stall import Grain_Stall
 from buildings.Sawmill import Sawmill
 from buildings.Ladder_Tower import Ladder_Tower
 from buildings.Docks import Docks
+from buildings.Headquarters import Headquarters
 
 building_classes = {
     "Grain Stall": Grain_Stall,
@@ -14,4 +15,5 @@ building_classes = {
     "Barracks": Barracks,
     "Ladder Tower": Ladder_Tower,
     "Docks": Docks,
+    "Headquarters": Headquarters,
 }
