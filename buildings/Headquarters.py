@@ -12,37 +12,34 @@ import utils.data
 
 color = discord.Color.from_rgb(201, 0, 118)
 
-units_array = ["Boat", "Battleship"]
 
-
-class Docks_Select(discord.ui.Select):
+class HQ_Select(discord.ui.Select):
     def __init__(self, author, unit, building):
         self.author = author
         self.unit = unit
         self.building = building
         options = []
 
-        for i in range(2):
-            name = units_array[i]
-            emoji = troops_emoji[name]
+        name = "Worker"
+        emoji = troops_emoji[name]
 
-            wood, stone, gold, iron = units_info[name].get("cost", (0, 0, 0, 0))
-            cost_string = ""
+        wood, stone, gold, iron = units_info[name].get("cost", (0, 0, 0, 0))
+        cost_string = ""
 
-            cost_string += f"Wood: {wood} "
-            cost_string += f",Stone: {stone} "
-            cost_string += f",Gold: {gold} "
-            cost_string += f",Iron: {iron} "
-            options.append(
-                discord.SelectOption(
-                    label=name,
-                    emoji=emoji,
-                    description=cost_string,
-                )
+        cost_string += f"Wood: {wood} "
+        cost_string += f",Stone: {stone} "
+        cost_string += f",Gold: {gold} "
+        cost_string += f",Iron: {iron} "
+        options.append(
+            discord.SelectOption(
+                label=name,
+                emoji=emoji,
+                description=cost_string,
             )
+        )
 
         super().__init__(
-            placeholder="Train units.",
+            placeholder="Train workers.",
             max_values=1,
             min_values=1,
             options=options,
@@ -103,12 +100,6 @@ class Docks_Select(discord.ui.Select):
         x, y = self.building["_id"].split("-")
         x, y = int(x) * 16, int(y) * 16
 
-        direction = self.building["image"][-1]
-        dir_map = {"U": (0, -1), "D": (0, 1), "R": (1, 0), "L": (-1, 0)}
-
-        f_x = x + dir_map[direction][0] * 32
-        f_y = y + dir_map[direction][1] * 32
-
         value = count["value"] + 1
         training_time = info_post.get("time")
 
@@ -127,11 +118,10 @@ class Docks_Select(discord.ui.Select):
         unit = {
             "_id": value,
             "name": name,
-            "type": "naval",
             "hp": hp,
             "race": self.unit["race"],
-            "x": f_x,
-            "y": f_y,
+            "x": x,
+            "y": y,
             "owner": self.author.id,
             "time": training_time * 60,
             "direction": "D",
@@ -150,18 +140,16 @@ class Docks(discord.ui.View):
         self.unit = unit
         self.building = building
 
-        embed = discord.Embed(color=color, title="Docks")
+        embed = discord.Embed(color=color, title="Headquarters")
 
         description = (
             "<:Docks:1136661531132690433>"
-            + info["Docks"]["Description"]
+            + info["Headquarters"]["Description"]
             + "\n\n* Unlocked Units:"
         )
-
-        for i in range(0, 2):
-            name = units_array[i]
-            emoji = troops_emoji[name]
-            description += f"\n * {emoji} {name}"
+        name = "Worker"
+        emoji = troops_emoji[name]
+        description += f"\n * {emoji} {name}"
 
         filter = {"building": self.building["_id"]}
         unit_in_queue = unit_queues.find_one(filter)
@@ -181,4 +169,4 @@ class Docks(discord.ui.View):
         self.embed = embed
         embed.description = description
 
-        self.add_item(Docks_Select(self.author, self.unit, self.building))
+        self.add_item(HQ_Select(self.author, self.unit, self.building))
