@@ -143,9 +143,9 @@ class Headquarters(discord.ui.View):
         embed = discord.Embed(color=color, title="Headquarters")
 
         description = (
-            "<:Docks:1136661531132690433>"
-            + info["Headquarters"]["Description"]
-            + "\n\n* Unlocked Units:"
+            "Headquarters are the most important in-game building."
+            + "Destroying the enemy HQs is the only way to win the game system!"
+            + "\n\n* Units:"
         )
         name = "Worker"
         emoji = troops_emoji[name]
