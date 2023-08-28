@@ -153,8 +153,8 @@ class Docks(discord.ui.View):
         embed = discord.Embed(color=color, title="Barracks")
 
         description = (
-            "<:Barracks:1136661534387470457> "
-            + info["Barracks"]["Description"]
+            "<:Docks:1136661531132690433>"
+            + info["Docks"]["Description"]
             + "\n\n* Unlocked Units:"
         )
 

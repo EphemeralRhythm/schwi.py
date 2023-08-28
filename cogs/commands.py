@@ -264,7 +264,92 @@ class Commands(commands.Cog):
                 description += f" * {amount} {emoji}\n"
 
         description += "\n"
+        _id = unit_post["_id"] if unit_post["name"] != "Player" else player_post["_id"]
+        command = db.commands_collection.find_one({"unit": _id})
+        if command:
+            description += "* **Command:** \n"
+            match command["command"]:
+                case "move":
+                    f_x, f_y = command.get("x"), command.get("y")
+                    x, y = unit_post.get("x"), unit_post.get("y")
+                    description += f"Move: ({f_x - x, f_y - y})"
+                case "attack":
+                    target = db.units_collection.find_one({"_id": command["target"]})
+                    description += f"Attack: {target['name']}"
+                case "battack":
+                    target = db.buildings_collection.find_one(
+                        {"_id": command["target"]}
+                    )
+                    description += f"Attack: {target['name']}"
+
+                case "gather":
+                    resources_type = command.get("type")
+                    raw_type = "raw_" + str(resources_type)
+                    amount = unit_post.get(raw_type)
+                    emoji = utils.emoji.resources.get(resources_type)
+                    description += f"Gather: {amount} {emoji}"
+                case "build":
+                    time = command.get("time")
+                    name = command.get("name")
+
+                    description += f"Build: {name} ({time} minutes left)"
+                case other:
+                    description += str(other)
+
         embed.description = description
+        await ctx.send(embed=embed)
+
+    @commands.command(name="statusAll")
+    async def status_all(self, ctx):
+        player_post = db.units_collection.find_one(
+            {"_id": ctx.author.id}
+        ) or db.dead_collection.find_one({"_id": ctx.author.id})
+
+        if not player_post:
+            await ctx.send("Invalid syntax. Use `.help reassign` for more info.")
+            return
+        race = player_post.get("race")
+        description = ""
+
+        query = {"race": race}
+        for unit in db.units_collection.find(query):
+            command = db.commands_collection.find({"_id": unit["_id"]})
+
+            if command:
+                description += f"* **{unit.get('name')} {unit['_id']}:** \n"
+                match command["command"]:
+                    case "move":
+                        f_x, f_y = command.get("x"), command.get("y")
+                        x, y = unit.get("x"), unit.get("y")
+                        description += f"Move: ({f_x - x, f_y - y})"
+                    case "attack":
+                        target = db.units_collection.find_one(
+                            {"_id": command["target"]}
+                        )
+                        description += f"Attack: {target['name']}"
+                    case "battack":
+                        target = db.buildings_collection.find_one(
+                            {"_id": command["target"]}
+                        )
+                        description += f"Attack: {target['name']}"
+
+                    case "gather":
+                        resources_type = command.get("type")
+                        raw_type = "raw_" + str(resources_type)
+                        amount = unit.get(raw_type)
+                        emoji = utils.emoji.resources.get(resources_type)
+                        description += f"Gather: {amount} {emoji}"
+                    case "build":
+                        time = command.get("time")
+                        name = command.get("name")
+
+                        description += f"Build: {name} ({time} minutes left)"
+                    case other:
+                        description += str(other)
+        color = (discord.Color.from_rgb(201, 0, 118),)
+        embed = discord.Embed(
+            color=color, title="All Units Status", description=description
+        )
         await ctx.send(embed=embed)
 
     @commands.command(name="reassign")

@@ -1,4 +1,5 @@
 units = {
+    "Player": {"sight": 8, "speed": 8, "hitpoints": 50},
     "Worker": {
         "attack": 4,
         "recharge": 0,

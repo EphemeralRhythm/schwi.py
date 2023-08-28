@@ -7,6 +7,7 @@ from utils.database import (
     commands_collection,
     map_collection,
     unit_queues,
+    mines_collection,
 )
 from utils.pings import get_pings
 import utils.data
@@ -51,6 +52,11 @@ def move(f_x: int, f_y: int, unit):
     else:
         x_step = int((f_x - x) * speed // distance)
         y_step = int((f_y - y) * speed // distance)
+
+        if x + x_step <= 0 or x + x_step >= 6000:
+            return -1
+        if y + y_step <= 0 or y + y_step >= 6000:
+            return -1
 
         if utils.data.map_arr[(x + x_step) // 16][(y + y_step) // 16] != node:
             return -1
@@ -303,6 +309,26 @@ async def damage(unit, target, client):
                 content=ping,
                 client=client,
             )
+            if unit["name"] == "boat":
+                if not unit.get("unit"):
+                    return
+
+                carried_unit = units_collection.find_one({"_id": unit["unit"]})
+                if not carried_unit:
+                    return
+                if carried_unit["name"] == "Player":
+                    dead_collection.insert_one(carried_unit)
+                units_collection.delete_one(carried_unit)
+                ping = carried_unit.get("owner") or carried_unit["_id"]
+
+                await log(
+                    t_race,
+                    "Unit Lost",
+                    f"{carried_unit['name']} {carried_unit['_id']} drowned",
+                    content=ping,
+                    client=client,
+                )
+
             return True
 
         elif t_hp <= 0:
@@ -555,6 +581,83 @@ def chop(unit, pos: tuple):
         return 1
 
 
+def gather(command, unit):
+    f_x, f_y = command.get("x") * 16, command.get("y") * 16
+    x = unit.get("x")
+    y = unit.get("y")
+
+    if command.get("state") == "collect":
+        if x != f_x or y != f_y:
+            move(f_x, f_y, unit)
+        else:
+            resource_type = "raw_" + str(command.get("type"))
+            resource_amount = 10
+            unit[resource_type] = unit.get(resource_type, 0) + resource_amount
+
+            result = mines_collection.update_one(
+                {"_id": command.get("ore")},
+                {"$inc": {"cap": -resource_amount}},
+            )
+
+            if result.modified_count == 1 and result.raw_result["updatedExisting"]:
+                ore = mines_collection.find_one({"_id": command.get("ore")})
+                if ore.get("cap") <= 0:
+                    mines_collection.delete_one({"_id": command.get("ore")})
+                    commands_collection.delete_one({"_id": command["_id"]})
+                    return
+
+            units_collection.update_one(
+                {"_id": unit["_id"]},
+                {"$set": {resource_type: unit[resource_type]}},
+            )
+
+            if unit.get(resource_type) >= 100:
+                commands_collection.update_one(
+                    {"_id": command["_id"]},
+                    {"$set": {"state": "deposit"}},
+                )
+
+    elif command.get("state") == "deposit":
+        query = {"race": unit.get("race"), "name": "Workshop"}
+        buildings = buildings_collection.find(query)
+
+        x, y = unit.get("x"), unit.get("y")
+
+        def locate(building):
+            xm, ym = building["_id"].split("-")
+            xm, ym = int(xm) * 16, int(ym) * 16
+
+            return abs(xm - x) + abs(ym - y)
+
+        buildings = sorted(buildings, key=lambda b: locate(b))
+        print(buildings)
+        if not buildings:
+            commands_collection.delete_one({"_id": command["_id"]})
+
+            return -1
+        f_x, f_y = buildings[0]["_id"].split("-")
+        f_x, f_y = int(f_x) * 16, int(f_y) * 16
+
+        value = move(f_x, f_y, unit)
+        if value:
+            resources_type = command.get("type")
+            raw_type = "raw_" + str(resources_type)
+
+            buildings_collection.update_one(
+                {"_id": buildings[0]["_id"]},
+                {"$inc": {resources_type: unit.get(raw_type)}},
+            )
+
+            units_collection.update_one(
+                {"_id": unit["_id"]},
+                {"$set": {raw_type: 0}},
+            )
+
+            commands_collection.update_one(
+                {"_id": command["_id"]}, {"$set": {"state": "collect"}}
+            )
+
+
 async def update_command(command, client: discord.Client):
     name = command["command"]
     unit_id = command["unit"]
@@ -656,13 +759,24 @@ async def update_command(command, client: discord.Client):
                 content=None,
             )
 
+    elif name == "gather":
+        result = gather(command, unit)
+        if result == -1:
+            await log(
+                unit.get("race"),
+                "Mine Depleted",
+                f"{command['name']} was depleted while {unit['_id']} was mining.",
+                client=client,
+                content=None,
+            )
+
 
 async def log(race: str, title: str, message: str, client, content=None):
     channel_id = 1089906968031924274
     if race == "cyan":
-        channel_id = 1134177985986043975
+        channel_id = 1138577304369504348
     elif race == "red":
-        channel_id = 1134178022287745054
+        channel_id = 1138577441376452669
     elif race == "lime":
         channel_id = 1134178075731558450
     else:

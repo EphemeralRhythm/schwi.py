@@ -35,7 +35,7 @@ def draw_map(player_post, unit_post, transparent=None):
         y - new_size[0] // 2 - offset_size[1],
         y + new_size[1] // 2 + offset_size[1] + 1,
     )
-    if race != "Admin":
+    if player_post.get("race") != "Admin":
         for b_x in range(x_bound[0] // 16, x_bound[1] // 16):
             for b_y in range(y_bound[0] // 16, y_bound[1] // 16):
                 post = utils.data.map_fog.get((b_x, b_y))
@@ -98,17 +98,19 @@ def draw_map(player_post, unit_post, transparent=None):
             or u_x > x + new_size[0] // 2 + 32
             or u_y < y - new_size[1] // 2 - 32
             or u_y > y + new_size[1] // 2 + 32
+            and race != "Admin"
         ):
             continue
         states = {-1: "attack", 0: "idle", 1: "move"}
         race = unit.get("race")
         name = unit.get("name")
 
-        if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
-            if not u.get(player_post.get("race")):
+        if player_post.get("race") != "Admin":
+            if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
+                if not u.get(player_post.get("race")):
+                    continue
+            else:
                 continue
-        else:
-            continue
         direction = unit.get("direction")
 
         if name == "Battleship":
@@ -175,17 +177,20 @@ def draw_map(player_post, unit_post, transparent=None):
             or u_x > x + new_size[0] // 2 + 32
             or u_y < y - new_size[1] // 2 - 32
             or u_y > y + new_size[1] // 2 + 32
+            and player_post.get("race") != "Admin"
         ):
             continue
         states = {-1: "attack", 0: "idle", 1: "move"}
         race = unit.get("race")
         name = unit.get("name")
 
-        if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
-            if not u.get(player_post.get("race")):
+        if player_post.get("race") != "Admin":
+            if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
+                if not u.get(player_post.get("race")):
+                    continue
+            else:
                 continue
-        else:
-            continue
+
         if name == "Player":
             name += "/" + unit.get("class")
         state = states.get(unit.get("state"))

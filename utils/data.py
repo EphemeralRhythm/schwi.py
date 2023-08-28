@@ -27,6 +27,14 @@ for building in db.buildings_collection.find():
 
     map_objects[(x, y)] = building
 
+for mine in db.mines_collection.find():
+    x, y = mine["x"], mine["y"]
+
+    mine["_id"] = f"{x}-{y}"
+    mine["type"] = "Mine"
+    map_objects[(x, y)] = mine
+
+
 for node in db.fog_collection.find():
     x, y = node["_id"].split("-")
     x, y = int(x), int(y)

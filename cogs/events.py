@@ -150,8 +150,6 @@ class Events(commands.Cog):
             await member.add_roles(role)
 
             if emoji == "schwi":
-                novice = discord.utils.get(guild.roles, name="Novice")
-                await member.add_roles(novice)
                 disboard_channel = self.client.get_channel(1026908349020770324)
                 embed_mess = await disboard_channel.fetch_message(1056567118960791652)
 

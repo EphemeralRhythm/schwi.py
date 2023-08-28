@@ -85,6 +85,14 @@ class Unit_Select(discord.ui.Select):
                     description="Plant seeds.",
                 )
             )
+
+            options.append(
+                discord.SelectOption(
+                    label="Gather",
+                    emoji="<:pickaxe:1101437961414905898>",
+                    description="Gather resources from a mine.",
+                )
+            )
         super().__init__(
             placeholder="Select your command",
             max_values=1,
@@ -548,6 +556,47 @@ class Unit_Select(discord.ui.Select):
             db.units_collection.update_one(
                 {"_id": self.unit["_id"]}, {"$inc": {"seeds": -20}}
             )
+
+        elif self.values[0] == "Gather":
+            mine = utils.data.map_objects.get((x // 16, y // 16), {})
+
+            dir_map = {"U": (0, -1), "D": (0, 1), "L": (-1, 0), "R": (1, 0)}
+            dir = self.unit.get("direction")
+
+            d_x, d_y = dir_map[dir]
+            if mine.get("type") != "Mine":
+                mine = utils.data.map_objects.get((x // 16 + d_x, y // 16 + d_y), {})
+            for d_x in [-1, 0, 1]:
+                for d_y in [-1, 0, 1]:
+                    if mine.get("type") != "Mine":
+                        mine = utils.data.map_objects.get(
+                            (x // 16 + d_x, y // 16 + d_y), {}
+                        )
+
+            if mine.get("type") != "Mine":
+                await interaction.response.send_message("No nearby mines found.")
+                return
+
+            else:
+                await interaction.response.send_message(
+                    f"Found {mine.get('name')}.\nCapacity: {mine.get('cap')}\nCommand added to queue!"
+                )
+                if mine.get("name") == "Iron Mine":
+                    resources_type = "iron"
+                else:
+                    resources_type = "gold"
+                command = {
+                    "author": self.author.id,
+                    "unit": self.unit.get("_id"),
+                    "command": "gather",
+                    "name": mine.get("name"),
+                    "x": mine["x"],
+                    "y": mine["y"],
+                    "state": "collect",
+                    "type": resources_type,
+                    "ore": mine["_id"],
+                }
+                db.commands_collection.insert_one(command)
 
 
 class Pings_Select(discord.ui.Select):

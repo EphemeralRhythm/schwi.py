@@ -10,6 +10,8 @@ from utils.database import (
 )
 import utils.data
 
+color = discord.Color.from_rgb(201, 0, 118)
+
 
 class Workshop(discord.ui.View):
     def __init__(self, author, unit, building, *, timeout: Optional[float] = 40):

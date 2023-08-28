@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import os
 
 cluster = MongoClient(
-    f"mongodb+srv://{os.getenv('database_key')}.mongodb.net/?retryWrites=true&w=majority"
+    f"mongodb+srv://ephemeralrhyhtm:ietiewtsptftwptfata03@cluster0.npfjeiw.mongodb.net/?retryWrites=true&w=majority"
 )
 
 db = cluster["Discord"]

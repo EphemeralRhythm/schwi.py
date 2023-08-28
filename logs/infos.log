@@ -1,7 +1,7 @@
-WARNING    - 2023-08-12 13:45:18,637 - client          : PyNaCl is not installed, voice will NOT be supported
-INFO       - 2023-08-12 13:45:18,640 - client          : logging in using static token
-INFO       - 2023-08-12 13:45:21,167 - gateway         : Shard ID None has connected to Gateway (Session ID: 077891c59b4985a4ee2f64f9583cb816).
-WARNING    - 2023-08-12 13:46:12,135 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+WARNING    - 2023-08-28 16:45:31,846 - client          : PyNaCl is not installed, voice will NOT be supported
+INFO       - 2023-08-28 16:45:31,846 - client          : logging in using static token
+INFO       - 2023-08-28 16:45:34,193 - gateway         : Shard ID None has connected to Gateway (Session ID: 037f2d4feb0750a9b853fbc1f82813a4).
+WARNING    - 2023-08-28 16:46:25,127 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
 Loop thread traceback (most recent call last):
   File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
     run()
@@ -38,40 +38,40 @@ Loop thread traceback (most recent call last):
   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
-  File "/home/rhythm/python/schwi.py/utils/data.py", line 30, in <module>
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
     for node in db.fog_collection.find():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1251, in next
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
     if len(self.__data) or self._refresh():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1191, in _refresh
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
     self.__send_message(g)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1055, in __send_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
     response = client._run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1341, in _run_operation
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
     return self._retryable_read(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1465, in _retryable_read
-    return func(session, server, sock_info, read_pref)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1337, in _cmd
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
     return server.run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 279, in inner
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
     return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 116, in run_operation
-    reply = sock_info.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 931, in receive_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
     return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 238, in receive_message
-    data = _receive_data_on_socket(sock_info, length - 16, deadline)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 299, in _receive_data_on_socket
-    chunk_length = sock_info.sock.recv_into(mv[bytes_read:])
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
   File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
     return self.read(nbytes, buffer)
   File "/usr/lib/python3.11/ssl.py", line 1134, in read
     return self._sslobj.read(len, buffer)
 
-WARNING    - 2023-08-12 13:46:22,408 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
+WARNING    - 2023-08-28 16:46:35,128 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
 Loop thread traceback (most recent call last):
   File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
     run()
@@ -91,118 +91,57 @@ Loop thread traceback (most recent call last):
     handle._run()
   File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
     self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 108, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 548, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 514, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 391, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1360, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1401, in _retry_internal
-    return func(session, sock_info, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 385, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 338, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 841, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 279, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 920, in write_command
-    reply = self.sock_info.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 965, in write_command
-    reply = self.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 931, in receive_message
-    return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 217, in receive_message
-    _receive_data_on_socket(sock_info, 16, deadline)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 299, in _receive_data_on_socket
-    chunk_length = sock_info.sock.recv_into(mv[bytes_read:])
-  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
-    return self.read(nbytes, buffer)
-  File "/usr/lib/python3.11/ssl.py", line 1134, in read
-    return self._sslobj.read(len, buffer)
-
-ERROR      - 2023-08-12 13:46:22,811 - client          : Attempting a reconnect in 1.65s
-Traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
-    await self.ws.poll_event()
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
-    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
-discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
-INFO       - 2023-08-12 13:46:25,147 - gateway         : Shard ID None has successfully RESUMED session 077891c59b4985a4ee2f64f9583cb816.
-WARNING    - 2023-08-12 13:47:16,251 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 63, in game
-    for unit in db.units_collection.find():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1251, in next
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
     if len(self.__data) or self._refresh():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1168, in _refresh
-    self.__send_message(q)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1055, in __send_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
     response = client._run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1341, in _run_operation
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
     return self._retryable_read(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1465, in _retryable_read
-    return func(session, server, sock_info, read_pref)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1337, in _cmd
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
     return server.run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 279, in inner
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
     return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 116, in run_operation
-    reply = sock_info.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 931, in receive_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
     return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 217, in receive_message
-    _receive_data_on_socket(sock_info, 16, deadline)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 299, in _receive_data_on_socket
-    chunk_length = sock_info.sock.recv_into(mv[bytes_read:])
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
   File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
     return self.read(nbytes, buffer)
   File "/usr/lib/python3.11/ssl.py", line 1134, in read
     return self._sslobj.read(len, buffer)
 
-ERROR      - 2023-08-12 13:48:08,994 - client          : Attempting a reconnect in 3.46s
-Traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
-    await self.ws.poll_event()
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
-    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
-discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
-WARNING    - 2023-08-12 13:48:17,393 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+WARNING    - 2023-08-28 16:46:45,129 - gateway         : Shard ID None heartbeat blocked for more than 30 seconds.
 Loop thread traceback (most recent call last):
   File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
     run()
@@ -222,105 +161,541 @@ Loop thread traceback (most recent call last):
     handle._run()
   File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
     self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 108, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 548, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 514, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 391, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1360, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1401, in _retry_internal
-    return func(session, sock_info, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 385, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 338, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 841, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 279, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 920, in write_command
-    reply = self.sock_info.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 965, in write_command
-    reply = self.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 931, in receive_message
-    return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 217, in receive_message
-    _receive_data_on_socket(sock_info, 16, deadline)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 299, in _receive_data_on_socket
-    chunk_length = sock_info.sock.recv_into(mv[bytes_read:])
-  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
-    return self.read(nbytes, buffer)
-  File "/usr/lib/python3.11/ssl.py", line 1134, in read
-    return self._sslobj.read(len, buffer)
-
-WARNING    - 2023-08-12 13:48:27,394 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 111, in game
-    for q in db.unit_queues.find():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1251, in next
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
     if len(self.__data) or self._refresh():
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1168, in _refresh
-    self.__send_message(q)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1055, in __send_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
     response = client._run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1341, in _run_operation
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
     return self._retryable_read(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 106, in csot_wrapper
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
     return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1465, in _retryable_read
-    return func(session, server, sock_info, read_pref)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1337, in _cmd
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
     return server.run_operation(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 279, in inner
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
     return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 116, in run_operation
-    reply = sock_info.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 931, in receive_message
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
     return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 217, in receive_message
-    _receive_data_on_socket(sock_info, 16, deadline)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 299, in _receive_data_on_socket
-    chunk_length = sock_info.sock.recv_into(mv[bytes_read:])
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
   File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
     return self.read(nbytes, buffer)
   File "/usr/lib/python3.11/ssl.py", line 1134, in read
     return self._sslobj.read(len, buffer)
 
-INFO       - 2023-08-12 13:49:21,004 - gateway         : Shard ID None session has been invalidated.
-INFO       - 2023-08-12 13:49:32,623 - gateway         : Shard ID None has connected to Gateway (Session ID: 39a83e0a6938f8704081b591e6847e90).
-ERROR      - 2023-08-12 13:49:34,649 - client          : Ignoring exception in on_ready
+WARNING    - 2023-08-28 16:46:55,130 - gateway         : Shard ID None heartbeat blocked for more than 40 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:05,131 - gateway         : Shard ID None heartbeat blocked for more than 50 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:15,132 - gateway         : Shard ID None heartbeat blocked for more than 60 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:25,133 - gateway         : Shard ID None heartbeat blocked for more than 70 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:35,134 - gateway         : Shard ID None heartbeat blocked for more than 80 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:45,134 - gateway         : Shard ID None heartbeat blocked for more than 90 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1013, in load_extension
+    await self._load_from_module_spec(spec, name)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 935, in _load_from_module_spec
+    spec.loader.exec_module(lib)  # type: ignore
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 5, in <module>
+    import utils.data
+  File "<frozen importlib._bootstrap>", line 1178, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1149, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/home/rhythm/python/schwi.py/utils/data.py", line 38, in <module>
+    for node in db.fog_collection.find():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1202, in _refresh
+    self.__send_message(g)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 267, in receive_message
+    data = _receive_data_on_socket(conn, length - 16, deadline)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:47:55,139 - gateway         : Shard ID None heartbeat blocked for more than 100 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 54, in game
+    await update_command(c, client=self.client)
+  File "/home/rhythm/python/schwi.py/utils/command_utils.py", line 670, in update_command
+    u_pings = get_pings(u_owner)
+  File "/home/rhythm/python/schwi.py/utils/pings.py", line 5, in get_pings
+    player_post = pings_collection.find_one({"_id": id})
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1508, in find_one
+    for result in cursor.limit(-1):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1262, in next
+    if len(self.__data) or self._refresh():
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1179, in _refresh
+    self.__send_message(q)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/cursor.py", line 1060, in __send_message
+    response = client._run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1388, in _run_operation
+    return self._retryable_read(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1535, in _retryable_read
+    return func(session, server, conn, read_pref)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1384, in _cmd
+    return server.run_operation(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/server.py", line 155, in run_operation
+    reply = conn.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:48:11,686 - gateway         : Can't keep up, shard ID None websocket is 12.8s behind.
+INFO       - 2023-08-28 16:48:11,686 - gateway         : Shard ID None session has been invalidated.
+INFO       - 2023-08-28 16:48:17,525 - gateway         : Shard ID None has connected to Gateway (Session ID: 21dc8dfd79682a599c8d7034e9a43a78).
+ERROR      - 2023-08-28 16:48:19,551 - client          : Ignoring exception in on_ready
 Traceback (most recent call last):
   File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
     await coro(*args, **kwargs)
@@ -328,12 +703,1473 @@ Traceback (most recent call last):
     await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
   File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1007, in load_extension
     raise errors.ExtensionAlreadyLoaded(name)
-discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.events' is already loaded.
-ERROR      - 2023-08-12 14:27:32,774 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>, <SelectOption label='Build' value='Build' description='Construct new buildings.' emoji=<PartialEmoji animated=False name='tool' id=1070299017587732501> default=False>, <SelectOption label='Plant' value='Plant' description='Plant seeds.' emoji=<PartialEmoji animated=False name='seeds' id=1139516070869352499> default=False>]>
+discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.world' is already loaded.
+ERROR      - 2023-08-28 16:50:33,634 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "ma0" is not found
+WARNING    - 2023-08-28 16:51:07,341 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 16:51:13,535 - client          : Attempting a reconnect in 0.86s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+INFO       - 2023-08-28 16:51:16,486 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+WARNING    - 2023-08-28 16:52:07,576 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1019, in write_command
+    self.send_message(msg, 0)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 974, in send_message
+    self.conn.sendall(message)
+  File "/usr/lib/python3.11/ssl.py", line 1241, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/lib/python3.11/ssl.py", line 1210, in send
+    return self._sslobj.write(data)
+
+ERROR      - 2023-08-28 16:52:17,126 - client          : Attempting a reconnect in 3.40s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+INFO       - 2023-08-28 16:52:21,390 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+WARNING    - 2023-08-28 16:53:12,315 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 16:53:23,329 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
 Traceback (most recent call last):
   File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
     await item.callback(interaction)
-  File "/home/rhythm/python/schwi.py/models/views.py", line 548, in callback
-    {"_id": self.unit.id}, {"$inc": {"seeds": -20}}
-            ^^^^^^^^^^^^
-AttributeError: 'dict' object has no attribute 'id'
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:53:23,388 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:53:23,390 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:53:38,170 - bot             : Ignoring exception in command map
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/cogs/commands.py", line 73, in map
+    await ctx.send(file=discord.File("images/NCNL/cropped.png"))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 1024, in send
+    return await super().send(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/abc.py", line 1561, in send
+    data = await state.http.send_message(channel.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 625, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1141, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 560, in _request
+    await resp.start(conn)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 899, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 104] Connection reset by peer
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1350, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: ClientOSError: [Errno 104] Connection reset by peer
+WARNING    - 2023-08-28 16:54:04,937 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:54:14,938 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 16:54:18,585 - client          : Attempting a reconnect in 7.72s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+INFO       - 2023-08-28 16:54:29,072 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+ERROR      - 2023-08-28 16:54:35,344 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "statusall" is not found
+ERROR      - 2023-08-28 16:55:30,693 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "wa" is not found
+ERROR      - 2023-08-28 16:55:32,949 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "wa" is not found
+WARNING    - 2023-08-28 16:56:09,057 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1019, in write_command
+    self.send_message(msg, 0)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 974, in send_message
+    self.conn.sendall(message)
+  File "/usr/lib/python3.11/ssl.py", line 1241, in sendall
+    v = self.send(byte_view[count:])
+  File "/usr/lib/python3.11/ssl.py", line 1210, in send
+    return self._sslobj.write(data)
+
+ERROR      - 2023-08-28 16:56:17,483 - client          : Attempting a reconnect in 1.60s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+INFO       - 2023-08-28 16:56:23,372 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+WARNING    - 2023-08-28 16:57:12,941 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 16:58:07,826 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 16:58:15,289 - client          : Attempting a reconnect in 28.81s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+ERROR      - 2023-08-28 16:58:19,949 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+INFO       - 2023-08-28 16:58:44,675 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+ERROR      - 2023-08-28 16:58:48,417 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "mine" is not found
+ERROR      - 2023-08-28 16:58:48,418 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "inventory" is not found
+ERROR      - 2023-08-28 16:58:48,817 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:58:48,822 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:58:48,868 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 645, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:59:19,925 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command ".." is not found
+ERROR      - 2023-08-28 16:59:20,745 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 134, in callback
+    await interaction.response.send_message("Enter the direction:")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 16:59:20,764 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 134, in callback
+    await interaction.response.send_message("Enter the direction:")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+WARNING    - 2023-08-28 17:00:17,011 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:00:25,428 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 17:00:25,429 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+WARNING    - 2023-08-28 17:01:09,668 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 17:01:19,669 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:01:20,730 - client          : Attempting a reconnect in 2.53s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+ERROR      - 2023-08-28 17:01:26,441 - view            : Ignoring exception in view <PingsView timeout=40 children=1> for item <Pings_Select placeholder='Edit your notification settings.' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Reaching destination' value='Reaching destination' description='Moving units reach their destination.' emoji=None default=False>, <SelectOption label='Hitting an obstacle' value='Hitting an obstacle' description='Moving units fail to reach their destination.' emoji=None default=False>, <SelectOption label='Attacking an enemy' value='Attacking an enemy' description='Units successfully attack target unit.' emoji=None default=False>, <SelectOption label='Failing to attack' value='Failing to attack' description='Units fail to attack target unit.' emoji=None default=False>, <SelectOption label='Getting attacked' value='Getting attacked' description='Units get attacked by enemy units.' emoji=None default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 652, in callback
+    await interaction.response.send_message(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+INFO       - 2023-08-28 17:01:26,546 - gateway         : Shard ID None has successfully RESUMED session 21dc8dfd79682a599c8d7034e9a43a78.
+WARNING    - 2023-08-28 17:02:17,620 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 17:03:12,471 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 17:03:22,472 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:03:26,876 - client          : Attempting a reconnect in 124.94s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+ERROR      - 2023-08-28 17:03:31,552 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 17:03:31,580 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+ERROR      - 2023-08-28 17:03:32,016 - view            : Ignoring exception in view <Select_View timeout=40 children=1> for item <Unit_Select placeholder='Select your command' min_values=1 max_values=1 disabled=False options=[<SelectOption label='Move' value='Move' description='Move this unit on the map.' emoji=<PartialEmoji animated=False name='location' id=1065283234834940044> default=False>, <SelectOption label='Turn' value='Turn' description='Choose the direction that your unit is facing.' emoji=<PartialEmoji animated=False name='turn' id=1135328996159131708> default=False>, <SelectOption label='Action' value='Action' description='Interact with nearby objects on the map.' emoji=<PartialEmoji animated=False name='pickaxe' id=1101437961414905898> default=False>, <SelectOption label='Attack (Unit)' value='Attack (Unit)' description='Attack an enemy unit.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Attack (Building)' value='Attack (Building)' description='Attack an enemy building.' emoji=<PartialEmoji animated=False name='crosshair' id=1065283238618214410> default=False>, <SelectOption label='Structure' value='Structure' description='Interact with near buildings.' emoji=<PartialEmoji animated=False name='gears' id=1068824355687112756> default=False>, <SelectOption label='Guard' value='Guard' description='Attack any enemy units within field of view.' emoji=<PartialEmoji animated=False name='⚔️' id=None> default=False>]>
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ui/view.py", line 427, in _scheduled_task
+    await item.callback(interaction)
+  File "/home/rhythm/python/schwi.py/models/views.py", line 170, in callback
+    await interaction.response.send_message("Enter the distance vector x y")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/interactions.py", line 801, in send_message
+    await adapter.create_interaction_response(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/webhook/async_.py", line 219, in request
+    raise NotFound(response, data)
+discord.errors.NotFound: 404 Not Found (error code: 10062): Unknown interaction
+INFO       - 2023-08-28 17:05:32,369 - gateway         : Shard ID None session has been invalidated.
+INFO       - 2023-08-28 17:05:38,007 - gateway         : Shard ID None has connected to Gateway (Session ID: a9745e0ffc9b8cb4ad4a7a2fed1a6699).
+ERROR      - 2023-08-28 17:05:40,048 - client          : Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1007, in load_extension
+    raise errors.ExtensionAlreadyLoaded(name)
+discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.world' is already loaded.
+ERROR      - 2023-08-28 17:08:28,519 - bot             : Ignoring exception in command map
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/cogs/commands.py", line 73, in map
+    await ctx.send(file=discord.File("images/NCNL/cropped.png"))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 1024, in send
+    return await super().send(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/abc.py", line 1561, in send
+    data = await state.http.send_message(channel.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 625, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 1141, in __aenter__
+    self._resp = await self._coro
+                 ^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 560, in _request
+    await resp.start(conn)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client_reqrep.py", line 899, in start
+    message, payload = await protocol.read()  # type: ignore[union-attr]
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/streams.py", line 616, in read
+    await self._waiter
+aiohttp.client_exceptions.ClientOSError: [Errno 104] Connection reset by peer
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1350, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: ClientOSError: [Errno 104] Connection reset by peer
+ERROR      - 2023-08-28 17:10:31,845 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "queue" is not found
+ERROR      - 2023-08-28 17:10:56,687 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command "statusall" is not found
+ERROR      - 2023-08-28 17:11:20,695 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command ".." is not found
+WARNING    - 2023-08-28 17:12:09,680 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:12:16,817 - client          : Attempting a reconnect in 187.18s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+INFO       - 2023-08-28 17:15:24,523 - gateway         : Shard ID None session has been invalidated.
+INFO       - 2023-08-28 17:15:31,500 - gateway         : Shard ID None has connected to Gateway (Session ID: c04422b0aed61ec070392e624dc3feb6).
+ERROR      - 2023-08-28 17:15:33,750 - client          : Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1007, in load_extension
+    raise errors.ExtensionAlreadyLoaded(name)
+discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.world' is already loaded.
+WARNING    - 2023-08-28 17:16:17,292 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:16:26,573 - bot             : Ignoring exception in command None
+discord.ext.commands.errors.CommandNotFound: Command ".." is not found
+WARNING    - 2023-08-28 17:17:15,480 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 17:18:07,461 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 104, in game
+    db.units_collection.update_one(query, update)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 1088, in update_one
+    self._update_retryable(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 883, in _update_retryable
+    return self.__database.client._retryable_write(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1568, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 864, in _update
+    return self._update(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 818, in _update
+    result = conn.command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 932, in command
+    return command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 181, in command
+    reply = receive_message(conn, request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+WARNING    - 2023-08-28 17:18:17,461 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
+    run()
+  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
+    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
+    await self.coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
+    db.fog_collection.bulk_write(fog_updates)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
+    bulk_api_result = blk.execute(write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
+    return self.execute_command(generator, write_concern, session)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
+    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
+    return func(self, *args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
+    return func(session, conn, retryable)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
+    self._execute_command(
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
+    result, to_send = bwc.execute(cmd, ops, client)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
+    result = self.write_command(cmd, request_id, msg, to_send)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
+    return func(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
+    reply = self.conn.write_command(request_id, msg, self.codec)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
+    reply = self.receive_message(request_id)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
+    return receive_message(self, request_id, self.max_message_size)
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
+    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
+    chunk_length = conn.conn.recv_into(mv[bytes_read:])
+  File "/usr/lib/python3.11/ssl.py", line 1278, in recv_into
+    return self.read(nbytes, buffer)
+  File "/usr/lib/python3.11/ssl.py", line 1134, in read
+    return self._sslobj.read(len, buffer)
+
+ERROR      - 2023-08-28 17:18:18,174 - client          : Attempting a reconnect in 362.17s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000

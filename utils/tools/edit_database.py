@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import os
 
 cluster = MongoClient(
-    f"mongodb+srv://ephemeralrhyhtm:P5gNwZsGY23zJqT@cluster0.npfjeiw.mongodb.net/?retryWrites=true&w=majority"
+    f"mongodb+srv://ephemeralrhyhtm:ietiewtsptftwptfata03@cluster0.npfjeiw.mongodb.net/?retryWrites=true&w=majority"
 )
 
 db = cluster["Discord"]
@@ -13,7 +13,7 @@ commands_collection = db["Commands"]
 dead_collection = db["Dead"]
 xp_collection = db["xp"]
 map_collection = db["Objects"]
-
+mine_collection = db["Mines"]
 # # Query to find documents with image: "DeadTrees2"
 # query = {"image": "DeadTrees3"}
 #
@@ -24,7 +24,11 @@ map_collection = db["Objects"]
 # # Print the number of documents updated
 # print(f"Number of documents updated: {result.modified_count}")
 
-result = map_collection.update_many({}, {"$unset": {"x": "", "y": ""}})
+# result = map_collection.update_many({}, {"$unset": {"x": "", "y": ""}})
 
 # Print the number of documents updated
-print(f"Number of documents updated: {result.modified_count}")
+# print(f"Number of documents updated: {result.modified_count}")
+for mine in mine_collection.find():
+    query = {"_id": mine["_id"]}
+    update = {"$set": {"cap": 2000}}
+    mine_collection.update_one(query, update)

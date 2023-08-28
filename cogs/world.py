@@ -10,7 +10,7 @@ from pymongo import UpdateOne
 
 ROWS = 375
 COLS = 375
-GAME_SPEED = 10
+GAME_SPEED = 60
 
 with open("map.txt", "r") as f:
     map_array = eval(f.read())
@@ -87,14 +87,12 @@ class World(commands.Cog):
             # update units
             update_map = {}
             query = {"_id": unit["_id"]}
-            info_post = units_info.get(unit["name"])
+            info_post = units_info[unit["name"]]
             if unit.get("recharge", 0) > 0:
                 update_map["recharge"] = 1
 
-            if not info_post:
-                max_hp = unit.get("max_hp", 0)
-            else:
-                max_hp = info_post["hitpoints"]
+            max_hp = unit.get("max_hp", info_post["hitpoints"])
+
             if unit.get("heal", 0) > 0:
                 update_map["heal"] = -1
             elif unit.get("hp") < max_hp:
@@ -104,8 +102,8 @@ class World(commands.Cog):
             else:
                 update = {"$set": {"state": 0}}
             db.units_collection.update_one(query, update)
-
-        db.fog_collection.bulk_write(fog_updates)
+        if fog_updates:
+            db.fog_collection.bulk_write(fog_updates)
         end_time_2 = time.time()
 
         for q in db.unit_queues.find():
