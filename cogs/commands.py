@@ -474,13 +474,10 @@ class Commands(commands.Cog):
         else:
             unit = player_post
 
-        filter = {"unit": unit["_id"]}
-        unit = db.units_collection.find_one(filter)
-
         if not unit.get("wood"):
             await ctx.send(f"{unit['name']} {unit['_id']} doesn't have any wood.")
             return
-        db.units_collection.update_one(
+        db.resources_collection.update_one(
             {"_id": ctx.author.id}, {"$inc": {"wood": unit.get("wood")}}
         )
         db.units_collection.update_one({"_id": unit["_id"]}, {"$set": {"wood": 0}})
