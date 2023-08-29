@@ -18,7 +18,6 @@ units_array = [
     "Lancer",
     "Knight",
     "Berserker",
-    "Musketeer",
     "Mage",
     "Assassin",
     "Mammoth",
