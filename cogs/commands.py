@@ -485,6 +485,8 @@ class Commands(commands.Cog):
         )
         db.units_collection.update_one({"_id": unit["_id"]}, {"$set": {"wood": 0}})
 
+        await ctx.send("✅")
+
 
 async def setup(client):
     await client.add_cog(Commands(client))
