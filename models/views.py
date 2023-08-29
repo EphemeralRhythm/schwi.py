@@ -279,6 +279,11 @@ class Unit_Select(discord.ui.Select):
                     return abs(i_x + x - loc_x) + abs(i_y + y - loc_y)
 
                 sorted_arr = sorted(buildings, key=lambda enemy: locate(enemy))
+                if not sorted_arr:
+                    await interaction.channel.send(
+                        "No target found in the specified location."
+                    )
+                    return
                 if locate(sorted_arr[0]) > 200:
                     await interaction.channel.send(
                         "No target found in the specified location."
