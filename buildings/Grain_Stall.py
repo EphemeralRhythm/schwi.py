@@ -110,20 +110,20 @@ class Grain_Stall(discord.ui.View):
 
             resources_collection.update_one(filter, update)
 
-        stock = self.building.get("seeds", 0)
-        stock += amount * 100
+            stock = self.building.get("seeds", 0)
+            stock += amount * 100
 
-        buildings_collection.update_one(
-            {"_id": self.building["_id"]}, {"$set": {"seeds": stock}}
-        )
-        self.building["seeds"] = stock
-        x, y = self.building["_id"].split("-")
-        x, y = int(x), int(y)
+            buildings_collection.update_one(
+                {"_id": self.building["_id"]}, {"$set": {"seeds": stock}}
+            )
+            self.building["seeds"] = stock
+            x, y = self.building["_id"].split("-")
+            x, y = int(x), int(y)
 
-        utils.data.map_objects[(x, y)] = self.building
-        await interaction.channel.send(
-            f"Successfully purchased {amount} * 100 {seeds}."
-        )
+            utils.data.map_objects[(x, y)] = self.building
+            await interaction.channel.send(
+                f"Successfully purchased {amount} * 100 {seeds}."
+            )
 
     @discord.ui.button(label="Sell Wheat")
     async def sell(self, interaction: discord.Interaction, item):
@@ -148,7 +148,7 @@ class Grain_Stall(discord.ui.View):
             return m.channel == interaction.channel and m.author == self.author
 
         try:
-            arg = await interaction.client.wait_for("message", check=check, timeout=20)
+            arg = await interaction.client.wait_for("message", check=check, timeout=10)
         except asyncio.TimeoutError:
             return
         try:
@@ -173,7 +173,7 @@ class Grain_Stall(discord.ui.View):
         timed_out = False
         try:
             await interaction.client.wait_for(
-                "reaction_add", check=check_reaction, timeout=20
+                "reaction_add", check=check_reaction, timeout=10
             )
         except asyncio.TimeoutError:
             timed_out = True
