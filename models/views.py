@@ -832,8 +832,8 @@ class construct_Select(discord.ui.Select):
                     building_image_name = f"Docks_{d}"
                     s = (16 + abs(nx) * 16, 16 + abs(ny) * 16)
 
-                    start = min((x, y), (x + s[0], y + s[1]))
-                    end = max((x, y), (x + s[0], y + s[1]))
+                    start = min((x, y), (x + 16 * nx, y + 16 * ny))
+                    end = max((x, y), (x + 16 * nx, y + 16 * ny))
                     draw_box = (x, y, x + s[0], y + s[1])
                     break
 
