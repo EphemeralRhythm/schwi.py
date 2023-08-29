@@ -23,8 +23,8 @@ class Levels(commands.Cog):
     @commands.Cog.listener()
     async def on_message(self, message):
         if not message.author.bot:
-            if message.author.id == 532902276021485589:
-                await message.add_reaction("<:L_onion:1109189732337975387>")
+            # if message.author.id == 532902276021485589:
+            #     await message.add_reaction("<:L_onion:1109189732337975387>")
 
             player_post = get_post(message.author.id)
             diff = int(time.time() - player_post.get("timeout", 0))
