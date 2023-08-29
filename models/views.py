@@ -830,7 +830,8 @@ class construct_Select(discord.ui.Select):
             for d in dir_map:
                 if dir_map[d] == (nx, ny):
                     building_image_name = f"Docks_{d}"
-                    s = (16 + nx * 16, 16 + ny * 16)
+                    s = (16 + abs(nx) * 16, 16 + abs(ny) * 16)
+
                     start = min((x, y), (x + s[0], y + s[1]))
                     end = max((x, y), (x + s[0], y + s[1]))
                     draw_box = (x, y, x + s[0], y + s[1])
