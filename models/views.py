@@ -394,26 +394,19 @@ class Unit_Select(discord.ui.Select):
                 return
             object = utils.data.map_objects.get((o_x // 16, o_y // 16))
 
-            if not object:
+            def locate_unit(unit):
+                offset = 0
+                loc_x, loc_y = unit.get("x"), unit.get("y")
+                if unit.get("unit"):
+                    offset += 32
+                return abs(o_x - loc_x) + abs(o_y - loc_y)
 
-                def locate_unit(unit):
-                    offset = 0
-                    loc_x, loc_y = unit.get("x"), unit.get("y")
-                    if unit.get("unit"):
-                        offset += 32
-                    return abs(o_x - loc_x) + abs(o_y - loc_y)
+            query = {"race": self.unit.get("race"), "name": "Boat"}
+            boats = db.units_collection.find(query)
 
-                query = {"race": self.unit.get("race"), "name": "Boat"}
-                boats = db.units_collection.find(query)
-
-                sorted_units = sorted(boats, key=lambda x: locate_unit(x))
-                if sorted_units:
-                    if locate_unit(sorted_units[0]) > 32:
-                        await interaction.response.send_message(
-                            "No nearby objects found."
-                        )
-                        return
-
+            sorted_units = sorted(boats, key=lambda x: locate_unit(x))
+            if sorted_units:
+                if locate_unit(sorted_units[0]) <= 40:
                     await interaction.response.send_message(
                         f"Found {sorted_units[0]['name']}. "
                         + "React with ✅ to hop on board!"
@@ -448,6 +441,7 @@ class Unit_Select(discord.ui.Select):
                         )
                         await interaction.channel.send("Hopped on!")
                     return
+
             if not object:
                 await interaction.response.send_message("No nearby objects found.")
                 return
