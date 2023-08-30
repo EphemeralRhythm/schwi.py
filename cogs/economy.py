@@ -34,7 +34,7 @@ class Economy(commands.Cog):
                 await ctx.send("Unit not found.")
                 return
 
-            if not author_post:
+            if not author_post and ctx.author != 660929334969761792:
                 await ctx.send("You are not a part of the game system.")
                 return
 

@@ -137,7 +137,7 @@ class World(commands.Cog):
 
                     updates.append(UpdateOne(query, update))
 
-            db.map_collection.bulk_write(fog_updates)
+            db.map_collection.bulk_write(updates)
             self.index = 0
         execution_time_1 = end_time_1 - start_time
         execution_time_2 = end_time_2 - end_time_1
