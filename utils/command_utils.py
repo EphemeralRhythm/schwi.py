@@ -612,7 +612,7 @@ def gather(command, unit):
             )
 
             if result.modified_count == 1 and result.raw_result["updatedExisting"]:
-                ore = mines_collection.find_one({"_id": command.get("ore")})
+                ore = mines_collection.find_one({"x": x, "y": y})
                 if ore.get("cap") <= 0:
                     mines_collection.delete_one({"_id": command.get("ore")})
                     commands_collection.delete_one({"_id": command["_id"]})
