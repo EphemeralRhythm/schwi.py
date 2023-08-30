@@ -605,8 +605,9 @@ def gather(command, unit):
             resource_amount = 10
             unit[resource_type] = unit.get(resource_type, 0) + resource_amount
 
+            x, y = command.get("x"), command.get("y")
             result = mines_collection.update_one(
-                {"_id": command.get("ore")},
+                {"x": x, "y": y},
                 {"$inc": {"cap": -resource_amount}},
             )
 
