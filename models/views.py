@@ -480,7 +480,7 @@ class Unit_Select(discord.ui.Select):
                     db.map_collection.delete_one({"_id": object["_id"]})
 
                     db.units_collection.update_one(
-                        {"_id": self.unit["_id"]}, {"$inc": {"wheat": 20 * 20}}
+                        {"_id": self.unit["_id"]}, {"$inc": {"haybale": 20}}
                     )
 
                     await interaction.channel.send(

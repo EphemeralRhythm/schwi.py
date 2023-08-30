@@ -181,7 +181,9 @@ class Grain_Stall(discord.ui.View):
             stock = self.building.get("stock", 0)
 
             if amount * 20 > stock:
-                await interaction.channel.send("Insufficient resources.")
+                await interaction.channel.send(
+                    "Haybales must be placed in the grain stall in order to sell them."
+                )
                 return
 
             stock -= 20 * amount
@@ -199,6 +201,26 @@ class Grain_Stall(discord.ui.View):
             utils.data.map_objects[(x, y)] = self.building
 
             await interaction.channel.send(f"Successfully sold {amount} {hay_bale}")
+
+    @discord.ui.button(label="Store")
+    async def store(self, interaction: discord.Interaction, item):
+        amount = self.unit.get("haybale")
+        if not amount:
+            await interaction.response.send_message(
+                "This units doesn't have anything to store."
+            )
+            return
+
+        self.building["stock"] += amount
+
+        x, y = self.building["_id"].split("-")
+        x, y = int(x), int(y)
+
+        utils.data.map_objects[(x, y)] = self.building
+        buildings_collection.update_one(
+            {"_id", self.building["_id"]}, {"$inc": {"stock": amount}}
+        )
+        units_collection.update_one({"_id": self.unit["_id"]}, {"$set": {"haybale": 0}})
 
     @discord.ui.button(label="Withdraw")
     async def withdraw(self, interaction: discord.Interaction, item):
