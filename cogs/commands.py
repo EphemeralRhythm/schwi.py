@@ -257,6 +257,7 @@ class Commands(commands.Cog):
             "stone",
             "raw_iron",
             "raw_gold",
+            "haybale",
         ]
         for item in items:
             if amount := unit_post.get(item):

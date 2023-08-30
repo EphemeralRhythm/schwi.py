@@ -211,7 +211,7 @@ class Grain_Stall(discord.ui.View):
             )
             return
 
-        self.building["stock"] += amount
+        self.building["stock"] = self.building.get("stock", 0) + amount
 
         x, y = self.building["_id"].split("-")
         x, y = int(x), int(y)
