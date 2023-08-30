@@ -659,6 +659,13 @@ def gather(command, unit):
                 {"$inc": {resources_type: unit.get(raw_type)}},
             )
 
+            x, y = buildings[0]["_id"].split("-")
+            x, y = int(x), int(y)
+
+            utils.data.map_objects[(x, y)][resources_type] = buildings[0][
+                resources_type
+            ] + unit.get(raw_type)
+
             units_collection.update_one(
                 {"_id": unit["_id"]},
                 {"$set": {raw_type: 0}},
