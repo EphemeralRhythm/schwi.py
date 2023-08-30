@@ -789,9 +789,6 @@ class construct_Select(discord.ui.Select):
                 await interaction.response.send_message(
                     "Cannot build here." + "Too close to another building."
                 )
-                await interaction.channel.send(f"{rect1} \n{rect2}")
-                print(size)
-                print(value)
                 return
         end = time.time()
         print(f"iterated through all map objects in {end - start :.3f}")
