@@ -153,14 +153,9 @@ class World(commands.Cog):
 
         await ctx.send("✅")
 
-    @commands.command(name="set_tick_speed")
-    async def set_tick_speed(self, ctx, arg=0):
-        if ctx.author.id != 660929334969761792:
-            return
-        global GAME_SPEED
-        GAME_SPEED = int(arg)
-
-        await ctx.send("✅")
+    @commands.command(name="get_time")
+    async def get_time(self, ctx):
+        await ctx.send(self.index)
 
     @commands.command(name="pathfind")
     async def pathfind(self, ctx, *, args):
