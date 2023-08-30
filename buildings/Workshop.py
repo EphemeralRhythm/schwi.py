@@ -75,10 +75,10 @@ class Workshop(discord.ui.View):
 
         buildings_collection.update_one(
             {"_id": self.building["_id"]},
-            {"$set": {"raw_iron": building_iron, "raw_gold": building_gold}},
+            {"$set": {"iron": building_iron, "gold": building_gold}},
         )
-        self.building["raw_iron"] = building_iron
-        self.building["raw_gold"] = building_gold
+        self.building["iron"] = building_iron
+        self.building["gold"] = building_gold
 
         x, y = self.building["_id"].split("-")
         x, y = int(x), int(y)
