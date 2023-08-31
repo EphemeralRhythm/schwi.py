@@ -325,7 +325,7 @@ class Commands(commands.Cog):
             command = db.commands_collection.find_one({"unit": unit["_id"]})
 
             if command:
-                description += f"* **{unit.get('name')} {unit['_id']}:** \n"
+                description += f"* {unit.get('name')} {unit['_id']}:\n"
                 match command["command"]:
                     case "move":
                         f_x, f_y = command.get("x"), command.get("y")
