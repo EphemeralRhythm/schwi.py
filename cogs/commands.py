@@ -25,19 +25,22 @@ class Commands(commands.Cog):
             return
 
         if arg:
-            try:
-                unit_id = int(arg)
-            except ValueError:
-                await ctx.send("Invalid parameter.")
-                return
+            if arg == "-a":
+                unit_post = player_post
+            else:
+                try:
+                    unit_id = int(arg)
+                except ValueError:
+                    await ctx.send("Invalid parameter.")
+                    return
 
-            unit_post = db.units_collection.find_one(
-                {"_id": unit_id, "race": player_post.get("race")}
-            )
+                unit_post = db.units_collection.find_one(
+                    {"_id": unit_id, "race": player_post.get("race")}
+                )
 
-            if unit_post is None:
-                await ctx.send("Unit not found.")
-                return
+                if unit_post is None:
+                    await ctx.send("Unit not found.")
+                    return
         else:
             if player_post.get("dead"):
                 await ctx.send("You are dead. L Bozo.")
@@ -58,8 +61,11 @@ class Commands(commands.Cog):
             y = new_size[1] // 2
         if y > size[1] - new_size[1] // 2:
             y = size[1] - new_size[1] // 2
+        if arg != "-a":
+            map_image = utils.ui.draw_map(player_post, unit_post)
+        else:
+            map_image = utils.ui.full_map(player_post, unit_post)
 
-        map_image = utils.ui.draw_map(player_post, unit_post)
         if player_post.get("race") != "Admin":
             cropped = map_image.crop(
                 (

@@ -451,7 +451,10 @@ async def attack(unit, target_id, client):
                 move(node[0] * 16, node[1] * 16, unit)
         else:
             move(t_x, t_y, unit)
-        return
+        dist = abs(u_x - t_x) + abs(u_y - t_y)
+
+        if dist > u_range:
+            return
 
     if unit.get("recharge", 0) != 0:
         return

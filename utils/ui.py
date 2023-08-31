@@ -98,7 +98,7 @@ def draw_map(player_post, unit_post, transparent=None):
             or u_x > x + new_size[0] // 2 + 32
             or u_y < y - new_size[1] // 2 - 32
             or u_y > y + new_size[1] // 2 + 32
-            and race != "Admin"
+            and player_post.get("race") != "Admin"
         ):
             continue
         states = {-1: "attack", 0: "idle", 1: "move"}
@@ -265,5 +265,213 @@ def draw_map(player_post, unit_post, transparent=None):
     # print(f"Units Time: {execution_time_3:.6f} seconds")
     # print(f"Crop Time: {execution_time_4:.6f} seconds")
     print(f"Total Time: {(start_time - end_time_4):.6f} seconds\n")
+
+    return map_image
+
+
+def full_map(player_post, unit_post):
+    size = (6000, 6000)
+    map_image = Image.open("images/NCNL/map.png")
+
+    fog_image = Image.new("RGBA", (6000, 6000), (0, 0, 0, 0))
+    overlay = ImageDraw.Draw(fog_image)
+    race = player_post.get("race")
+
+    for b_x in range(0, size[0] // 16):
+        for b_y in range(0, size[1] // 16):
+            post = utils.data.map_fog.get((b_x, b_y))
+            dynamic_post = utils.data.dynamic_fog.get(
+                (b_x, b_y), {"cyan": 0, "red": 0, "lime": 0}
+            )
+            dynamic_post["Admin"] = 1
+            if not post:
+                continue
+            if not post.get(race):
+                overlay.rectangle(
+                    (
+                        b_x * 16,
+                        b_y * 16,
+                        b_x * 16 + 16,
+                        b_y * 16 + 16,
+                    ),
+                    fill=(0, 0, 0),
+                )
+            else:
+                if utils.data.game_time < 180:
+                    if not dynamic_post.get(race):
+                        overlay.rectangle(
+                            (
+                                b_x * 16,
+                                b_y * 16,
+                                b_x * 16 + 16,
+                                b_y * 16 + 16,
+                            ),
+                            fill=(0, 0, 0, 100),
+                        )
+                else:
+                    if not dynamic_post.get(race):
+                        overlay.rectangle(
+                            (
+                                b_x * 16,
+                                b_y * 16,
+                                b_x * 16 + 16,
+                                b_y * 16 + 16,
+                            ),
+                            fill=(0, 0, 0, 200),
+                        )
+
+                    else:
+                        overlay.rectangle(
+                            (
+                                b_x * 16,
+                                b_y * 16,
+                                b_x * 16 + 16,
+                                b_y * 16 + 16,
+                            ),
+                            fill=(0, 0, 0, 100),
+                        )
+
+    # draw naval units
+    for unit in db.units_collection.find({"type": "naval"}):
+        u_x, u_y = unit.get("x"), unit.get("y")
+        states = {-1: "attack", 0: "idle", 1: "move"}
+        race = unit.get("race")
+        name = unit.get("name")
+
+        if player_post.get("race") != "Admin":
+            if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
+                if not u.get(player_post.get("race")):
+                    continue
+            else:
+                continue
+        direction = unit.get("direction")
+
+        if name == "Battleship":
+            path = f"images/NCNL/Units/{race}/{name}/{direction}.png"
+            s = 32
+        else:
+            path = f"images/NCNL/Units/boats/{direction}.png"
+            s = 16
+
+        unit_image = Image.open(path)
+        map_image.paste(
+            unit_image,
+            (
+                u_x - s // 2,
+                u_y - s // 2,
+                u_x + s // 2,
+                u_y + s // 2,
+            ),
+            mask=unit_image,
+        )
+
+    # draw map objects
+    for b_x in range(0, size[0] // 16):
+        for b_y in range(0, size[1] // 16):
+            object = utils.data.map_objects.get((b_x, b_y))
+            if not object:
+                continue
+            if player_post.get("race") != "Admin":
+                if u := utils.data.dynamic_fog.get((b_x // 16, b_y // 16)):
+                    if not u.get(player_post.get("race")):
+                        continue
+
+            object_type = object.get("type")
+            size = object.get("size", (16, 16))
+
+            if object["name"] == "wheatfield":
+                path = f"images/NCNL/Nature/Wheatfield{object['state']}.png"
+            elif object_type == "building":
+                race = object.get("race", "NPC")
+
+                path = f"images/NCNL/{race}/{object.get('image')}.png"
+            elif object_type == "wall":
+                path = f"images/NCNL/Walls/{object.get('image')}.png"
+            elif object_type == "nature":
+                path = f"images/NCNL/Nature/{object.get('image')}.png"
+            else:
+                path = f"images/NCNL/Other/{object.get('image')}.png"
+
+            image = Image.open(path)
+            map_image.paste(
+                image,
+                (b_x * 16, b_y * 16, b_x * 16 + size[0], b_y * 16 + size[1]),
+                mask=image,
+            )
+
+    print("started")
+    # draw units
+    for unit in db.units_collection.find():
+        if unit.get("type") == "naval":
+            continue
+        u_x, u_y = unit.get("x"), unit.get("y")
+
+        states = {-1: "attack", 0: "idle", 1: "move"}
+        race = unit.get("race")
+        name = unit.get("name")
+
+        if player_post.get("race") != "Admin":
+            if u := utils.data.dynamic_fog.get((u_x // 16, u_y // 16)):
+                if not u.get(player_post.get("race")):
+                    continue
+            else:
+                continue
+
+        if name == "Player":
+            name += "/" + unit.get("class")
+        state = states.get(unit.get("state"))
+        direction = unit.get("direction")
+
+        s = 32 if name == "Knight" or name == "Battleship" else 16
+        path = f"images/NCNL/Units/{race}/{name}/{state}/{direction}.png"
+
+        unit_image = Image.open(path)
+        map_image.paste(
+            unit_image,
+            (
+                u_x - s // 2,
+                u_y - s // 2,
+                u_x + s // 2,
+                u_y + s // 2,
+            ),
+            mask=unit_image,
+        )
+
+        if name == "Lancer" and state == "attack":
+            dir = {"U": (0, -1), "D": (0, 1), "L": (-1, 0), "R": (1, 0)}
+            offset = dir.get(direction, (0, 0))
+            u_x += 16 * offset[0]
+            u_y += 16 * offset[1]
+
+            path = f"images/NCNL/Units/{race}/{name}/{state}/{direction}2.png"
+
+            unit_image = Image.open(path)
+            map_image.paste(
+                unit_image,
+                (
+                    u_x - s // 2,
+                    u_y - s // 2,
+                    u_x + s // 2,
+                    u_y + s // 2,
+                ),
+                mask=unit_image,
+            )
+
+    path = "images/NCNL/Other/0.png"
+    unit_image = Image.open(path)
+    u_x, u_y = unit_post.get("x"), unit_post.get("y")
+    s = 16
+    map_image.paste(
+        unit_image,
+        (
+            u_x - s // 2,
+            u_y - s // 2,
+            u_x + s // 2,
+            u_y + s // 2,
+        ),
+        mask=unit_image,
+    )
+    if player_post.get("race") != "Admin":
+        map_image = Image.alpha_composite(map_image, fog_image)
 
     return map_image
