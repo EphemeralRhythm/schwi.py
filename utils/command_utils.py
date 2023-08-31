@@ -587,22 +587,20 @@ def gather(command, unit):
     f_x, f_y = command.get("x") * 16, command.get("y") * 16
     x = unit.get("x")
     y = unit.get("y")
-    if f_x != x or f_y != y:
-        path = astar(f_x // 16, f_y // 16, unit)
-        if not path:
-            commands_collection.delete_many({"unit": unit["_id"]})
-            return 1
-        else:
-            if len(path) == 1:
-                move(f_x, f_y, unit)
-            else:
-                points = move_to_path(path)
-                node = points[0]
-                move(node[0] * 16, node[1] * 16, unit)
-        return
     if command.get("state") == "collect":
         if x != f_x or y != f_y:
-            move(f_x, f_y, unit)
+            path = astar(f_x // 16, f_y // 16, unit)
+            if not path:
+                commands_collection.delete_many({"unit": unit["_id"]})
+                return 1
+            else:
+                if len(path) == 1:
+                    move(f_x, f_y, unit)
+                else:
+                    points = move_to_path(path)
+                    node = points[0]
+                    move(node[0] * 16, node[1] * 16, unit)
+            return
         else:
             resource_type = "raw_" + str(command.get("type"))
             resource_amount = 10
@@ -650,6 +648,7 @@ def gather(command, unit):
             commands_collection.delete_one({"_id": command["_id"]})
 
             return 1
+
         f_x, f_y = buildings[0]["_id"].split("-")
         f_x, f_y = int(f_x) * 16, int(f_y) * 16
 
