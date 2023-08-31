@@ -740,6 +740,7 @@ async def update_command(command, client: discord.Client):
         dir = command.get("direction")
         if chop(unit, (x, y)):
             units_collection.update_one({"_id": unit["_id"]}, {"$inc": {"wood": 5}})
+            commands_collection.delete_one({"_id": command["_id"]})
             await log(
                 unit.get("race"),
                 "Command Completed",

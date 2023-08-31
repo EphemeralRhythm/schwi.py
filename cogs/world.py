@@ -133,7 +133,7 @@ class World(commands.Cog):
                 if field["state"] < 4:
                     field["state"] += 1
                     query = {"_id": field["_id"]}
-                    update = {"state": field["state"]}
+                    update = {"$set": {"state": field["state"]}}
 
                     updates.append(UpdateOne(query, update))
 
