@@ -127,6 +127,8 @@ class Unit_Select(discord.ui.Select):
                 "x": x,
                 "y": y,
             }
+
+            db.commands_collection.delete_many({"unit": self.unit.get("_id")})
             db.commands_collection.insert_one(command)
             await interaction.response.send_message("Command added to queue!")
 
@@ -153,6 +155,7 @@ class Unit_Select(discord.ui.Select):
                 "command": "turn",
                 "direction": direction.content,
             }
+            db.commands_collection.delete_many({"unit": self.unit.get("_id")})
             db.commands_collection.insert_one(command)
             await interaction.channel.send("Command added to queue!")
 
@@ -215,6 +218,7 @@ class Unit_Select(discord.ui.Select):
                     "x": i_x + x,
                     "y": i_y + y,
                 }
+                db.commands_collection.delete_many({"unit": self.unit.get("_id")})
                 db.commands_collection.insert_one(command)
 
                 await interaction.channel.send("Command added to queue!")
@@ -264,6 +268,7 @@ class Unit_Select(discord.ui.Select):
                         "command": "attack",
                         "target": players[0]["_id"],
                     }
+                    db.commands_collection.delete_many({"unit": self.unit.get("_id")})
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
 
@@ -312,6 +317,7 @@ class Unit_Select(discord.ui.Select):
                         "command": "battack",
                         "target": sorted_arr[0]["_id"],
                     }
+                    db.commands_collection.delete_many({"unit": self.unit.get("_id")})
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
 
@@ -519,6 +525,7 @@ class Unit_Select(discord.ui.Select):
                         "y": o_y,
                     }
 
+                    db.commands_collection.delete_many({"unit": self.unit.get("_id")})
                     db.commands_collection.insert_one(command)
                     await interaction.channel.send("Command added to queue!")
 
@@ -601,6 +608,7 @@ class Unit_Select(discord.ui.Select):
                     "type": resources_type,
                     "ore": mine["_id"],
                 }
+                db.commands_collection.delete_many({"unit": self.unit.get("_id")})
                 db.commands_collection.insert_one(command)
 
 
@@ -904,6 +912,7 @@ class construct_Select(discord.ui.Select):
             }
             if s != (16, 16):
                 command["size"] = s
+            db.commands_collection.delete_many({"unit": self.unit.get("_id")})
             db.commands_collection.insert_one(command)
             await interaction.channel.send("Command added to queue!")
 
