@@ -89,7 +89,7 @@ class World(commands.Cog):
             query = {"_id": unit["_id"]}
             info_post = units_info[unit["name"]]
             if unit.get("recharge", 0) > 0:
-                update_map["recharge"] = 1
+                update_map["recharge"] = -1
 
             max_hp = unit.get("max_hp", info_post["hitpoints"])
 
