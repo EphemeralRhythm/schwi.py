@@ -474,14 +474,22 @@ async def attack(unit, target_id, client):
         target = units_collection.find_one({"_id": target["_id"]})
         unit = units_collection.find_one({"_id": unit["_id"]})
 
-        t_x = target.get("x")
-        t_y = target.get("y")
+        if not target and unit:
+            return
 
-        u_x = unit.get("x")
-        u_y = unit.get("y")
+        t_x = target["x"]
+        t_y = target["y"]
+
+        u_x = unit["x"]
+        u_y = unit["y"]
+
+        print(f"Unit Name: {u_name}, target name: {t_name}")
+        print(f"u_x: {u_x}, u_y: {u_y}")
+        print(f"t_x: {t_x}, t_y: {t_y}")
 
         dist = abs(u_x - t_x) + abs(u_y - t_y)
 
+        print(f"{dist}, {u_range}")
         if dist > u_range:
             return
 
