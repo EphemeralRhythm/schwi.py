@@ -385,6 +385,26 @@ async def damage(unit, target, client):
                 content=t_mention,
                 client=client,
             )
+
+            if target["name"] == "Headquarters":
+                map_collection.delete_one({"_id": target["_id"]})
+                units_collection.delete_many({"race": target["race"]})
+                dead_collection.delete_many({"race": target["race"]})
+
+                await log(
+                    u_race,
+                    "GG!",
+                    f"Team {target['race']} was eliminated.",
+                    client=client,
+                    content=None,
+                )
+                await log(
+                    t_race,
+                    "Game Over",
+                    f"Team {target['race']} was eliminated.",
+                    content=t_mention,
+                    client=client,
+                )
         else:
             buildings_collection.update_one(
                 {"_id": target["_id"]}, {"$set": {"hp": t_hp}}
