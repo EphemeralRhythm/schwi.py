@@ -139,8 +139,8 @@ class World(commands.Cog):
 
             db.map_collection.bulk_write(updates)
             self.index = 0
-        execution_time_1 = end_time_1 - start_time
-        execution_time_2 = end_time_2 - end_time_1
+        # execution_time_1 = end_time_1 - start_time
+        # execution_time_2 = end_time_2 - end_time_1
         # print(f"Handling commands:{execution_time_1:.6f} seconds")
         # print(f"World Fog Time: {execution_time_2:.6f} seconds")
 

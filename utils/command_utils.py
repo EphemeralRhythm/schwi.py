@@ -417,8 +417,6 @@ async def attack(unit, target_id, client):
     if not target:
         return
 
-    night_debuff = 0 if utils.data.game_time < 180 else 2
-
     u_name = unit.get("name")
     u_x = unit.get("x")
     u_y = unit.get("y")
@@ -426,6 +424,7 @@ async def attack(unit, target_id, client):
     u_info = units.get(u_name, {})
 
     u_range = unit.get("range") or u_info.get("range") or 8
+    night_debuff = 0 if utils.data.game_time < 180 or u_range <= 16 else 16
     u_range -= night_debuff
 
     u_owner = unit.get("owner") or unit["_id"]
@@ -446,7 +445,7 @@ async def attack(unit, target_id, client):
         u_range += 2 * 16
     if t_node != u_node:
         dist += 16
-    print(f"Range: {u_range}, Dist: {dist}")
+    print(f"Name: {u_name}, Range: {u_range}, Dist: {dist}")
     if dist > u_range:
         path = astar(t_x // 16, t_y // 16, unit)
         if not path and u_range <= 16:
@@ -471,6 +470,7 @@ async def attack(unit, target_id, client):
                 move(node[0] * 16, node[1] * 16, unit)
         else:
             move(t_x, t_y, unit)
+
         target = units_collection.find_one({"_id": target["_id"]})
         unit = units_collection.find_one({"_id": unit["_id"]})
 
@@ -494,7 +494,7 @@ async def attack(unit, target_id, client):
         for enemy in units_collection.find({"race": {"$ne": u_race}}):
             e_x = enemy["x"]
             e_y = enemy["y"]
-            if abs(t_x - e_x) + abs(t_y - e_y) > 60:
+            if abs(t_x - e_x) + abs(t_y - e_y) > 40:
                 continue
             await damage(unit, enemy, client)
 
