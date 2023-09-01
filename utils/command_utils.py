@@ -471,6 +471,15 @@ async def attack(unit, target_id, client):
                 move(node[0] * 16, node[1] * 16, unit)
         else:
             move(t_x, t_y, unit)
+        target = units_collection.find_one({"_id": target["_id"]})
+        unit = units_collection.find_one({"_id": unit["_id"]})
+
+        t_x = target.get("x")
+        t_y = target.get("y")
+
+        u_x = unit.get("x")
+        u_y = unit.get("y")
+
         dist = abs(u_x - t_x) + abs(u_y - t_y)
 
         if dist > u_range:
