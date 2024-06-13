@@ -1,300 +1,816 @@
-WARNING    - 2023-09-01 20:34:07,319 - client          : PyNaCl is not installed, voice will NOT be supported
-INFO       - 2023-09-01 20:34:07,320 - client          : logging in using static token
-INFO       - 2023-09-01 20:34:10,215 - gateway         : Shard ID None has connected to Gateway (Session ID: 6acec583056d40c577fd13f8602ac57d).
-WARNING    - 2023-09-01 20:35:48,899 - gateway         : Shard ID None heartbeat blocked for more than 10 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
-    return func(session, conn, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
-    reply = self.conn.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1019, in write_command
-    self.send_message(msg, 0)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 974, in send_message
-    self.conn.sendall(message)
-  File "/usr/lib/python3.11/ssl.py", line 1274, in sendall
-    v = self.send(byte_view[count:])
-  File "/usr/lib/python3.11/ssl.py", line 1243, in send
-    return self._sslobj.write(data)
+WARNING    - 2023-10-08 10:06:27,171 - client          : PyNaCl is not installed, voice will NOT be supported
+INFO       - 2023-10-08 10:06:27,172 - client          : logging in using static token
+INFO       - 2023-10-08 10:06:28,772 - gateway         : Shard ID None has connected to Gateway (Session ID: 38440fc4ec835c47ef77571bd391d851).
+INFO       - 2023-10-08 10:38:32,579 - gateway         : Shard ID None has successfully RESUMED session 38440fc4ec835c47ef77571bd391d851.
+ERROR      - 2023-10-08 11:20:52,506 - client          : Attempting a reconnect in 1.19s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 659, in connect
+    await self.ws.poll_event()
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 646, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+ERROR      - 2023-10-08 11:21:03,810 - client          : Attempting a reconnect in 3.96s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
 
-WARNING    - 2023-09-01 20:35:58,899 - gateway         : Shard ID None heartbeat blocked for more than 20 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
-    return func(session, conn, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
-    reply = self.conn.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1019, in write_command
-    self.send_message(msg, 0)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 974, in send_message
-    self.conn.sendall(message)
-  File "/usr/lib/python3.11/ssl.py", line 1274, in sendall
-    v = self.send(byte_view[count:])
-  File "/usr/lib/python3.11/ssl.py", line 1243, in send
-    return self._sslobj.write(data)
+The above exception was the direct cause of the following exception:
 
-WARNING    - 2023-09-01 20:36:08,900 - gateway         : Shard ID None heartbeat blocked for more than 30 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
-    return func(session, conn, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
-    reply = self.conn.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
-    reply = self.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
-    return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
-    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
-    chunk_length = conn.conn.recv_into(mv[bytes_read:])
-  File "/usr/lib/python3.11/ssl.py", line 1311, in recv_into
-    return self.read(nbytes, buffer)
-  File "/usr/lib/python3.11/ssl.py", line 1167, in read
-    return self._sslobj.read(len, buffer)
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+INFO       - 2023-10-08 11:21:16,000 - gateway         : Shard ID None has successfully RESUMED session 38440fc4ec835c47ef77571bd391d851.
+ERROR      - 2023-10-08 11:38:27,653 - client          : Attempting a reconnect in 0.87s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
 
-WARNING    - 2023-09-01 20:36:18,901 - gateway         : Shard ID None heartbeat blocked for more than 40 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
-    return func(session, conn, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
-    reply = self.conn.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
-    reply = self.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
-    return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
-    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
-    chunk_length = conn.conn.recv_into(mv[bytes_read:])
-  File "/usr/lib/python3.11/ssl.py", line 1311, in recv_into
-    return self.read(nbytes, buffer)
-  File "/usr/lib/python3.11/ssl.py", line 1167, in read
-    return self._sslobj.read(len, buffer)
+The above exception was the direct cause of the following exception:
 
-WARNING    - 2023-09-01 20:36:28,902 - gateway         : Shard ID None heartbeat blocked for more than 50 seconds.
-Loop thread traceback (most recent call last):
-  File "/home/rhythm/python/schwi.py/main.py", line 37, in <module>
-    run()
-  File "/home/rhythm/python/schwi.py/main.py", line 33, in run
-    bot.run(settings.DISCORD_API_SECRET, root_logger=True)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 860, in run
-    asyncio.run(runner())
-  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
-    return runner.run(main)
-  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
-    return self._loop.run_until_complete(task)
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
-    self.run_forever()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
-    self._run_once()
-  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
-    handle._run()
-  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
-    self._context.run(self._callback, *self._args)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/tasks/__init__.py", line 239, in _loop
-    await self.coro(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/cogs/world.py", line 106, in game
-    db.fog_collection.bulk_write(fog_updates)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/collection.py", line 571, in bulk_write
-    bulk_api_result = blk.execute(write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 580, in execute
-    return self.execute_command(generator, write_concern, session)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 447, in execute_command
-    client._retry_with_session(self.is_retryable, retryable_bulk, s, self)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1413, in _retry_with_session
-    return self._retry_internal(retryable, func, session, bulk)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/_csot.py", line 108, in csot_wrapper
-    return func(self, *args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/mongo_client.py", line 1460, in _retry_internal
-    return func(session, conn, retryable)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 435, in retryable_bulk
-    self._execute_command(
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/bulk.py", line 381, in _execute_command
-    result, to_send = bwc.execute(cmd, ops, client)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 967, in execute
-    result = self.write_command(cmd, request_id, msg, to_send)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/helpers.py", line 315, in inner
-    return func(*args, **kwargs)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/message.py", line 1061, in write_command
-    reply = self.conn.write_command(request_id, msg, self.codec)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 1020, in write_command
-    reply = self.receive_message(request_id)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/pool.py", line 984, in receive_message
-    return receive_message(self, request_id, self.max_message_size)
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 247, in receive_message
-    length, _, response_to, op_code = _UNPACK_HEADER(_receive_data_on_socket(conn, 16, deadline))
-  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/pymongo/network.py", line 328, in _receive_data_on_socket
-    chunk_length = conn.conn.recv_into(mv[bytes_read:])
-  File "/usr/lib/python3.11/ssl.py", line 1311, in recv_into
-    return self.read(nbytes, buffer)
-  File "/usr/lib/python3.11/ssl.py", line 1167, in read
-    return self._sslobj.read(len, buffer)
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 11:38:33,733 - client          : Attempting a reconnect in 12.65s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
 
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 11:38:53,936 - client          : Attempting a reconnect in 4.94s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+INFO       - 2023-10-08 11:39:18,203 - gateway         : Shard ID None session has been invalidated.
+INFO       - 2023-10-08 11:39:33,464 - gateway         : Shard ID None has connected to Gateway (Session ID: 9ef9806489c81d95d2aa72f90d77ed7d).
+ERROR      - 2023-10-08 11:39:35,587 - client          : Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1007, in load_extension
+    raise errors.ExtensionAlreadyLoaded(name)
+discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.help' is already loaded.
+INFO       - 2023-10-08 12:02:25,801 - gateway         : Shard ID None has successfully RESUMED session 9ef9806489c81d95d2aa72f90d77ed7d.
+INFO       - 2023-10-08 12:20:38,248 - gateway         : Shard ID None has successfully RESUMED session 9ef9806489c81d95d2aa72f90d77ed7d.
+ERROR      - 2023-10-08 12:31:29,422 - client          : Attempting a reconnect in 0.89s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:31:58,336 - client          : Attempting a reconnect in 2.25s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:32:28,616 - client          : Attempting a reconnect in 7.88s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:33:04,529 - client          : Attempting a reconnect in 4.99s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:33:32,549 - client          : Attempting a reconnect in 16.67s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:34:00,255 - client          : Attempting a reconnect in 32.53s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:34:48,836 - client          : Attempting a reconnect in 68.45s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:36:16,377 - client          : Attempting a reconnect in 127.59s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:38:41,096 - client          : Attempting a reconnect in 2.96s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:39:09,079 - client          : Attempting a reconnect in 222.43s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+ERROR      - 2023-10-08 12:43:05,632 - client          : Attempting a reconnect in 922.66s
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1155, in _create_direct_connection
+    hosts = await asyncio.shield(host_resolved)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 874, in _resolve_host
+    addrs = await self._resolver.resolve(host, port, family=self._family)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/resolver.py", line 33, in resolve
+    infos = await self._loop.getaddrinfo(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 867, in getaddrinfo
+    return await self.run_in_executor(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/socket.py", line 962, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno -3] Temporary failure in name resolution
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 656, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/gateway.py", line 372, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/http.py", line 537, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 779, in _ws_connect
+    resp = await self.request(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/client.py", line 536, in _request
+    conn = await self._connector.connect(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 540, in connect
+    proto = await self._create_connection(req, traces, timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 901, in _create_connection
+    _, proto = await self._create_direct_connection(req, traces, timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/aiohttp/connector.py", line 1169, in _create_direct_connection
+    raise ClientConnectorError(req.connection_key, exc) from exc
+aiohttp.client_exceptions.ClientConnectorError: Cannot connect to host gateway-us-east1-c.discord.gg:443 ssl:default [Temporary failure in name resolution]
+INFO       - 2023-10-08 12:58:29,304 - gateway         : Shard ID None session has been invalidated.
+INFO       - 2023-10-08 12:58:35,059 - gateway         : Shard ID None has connected to Gateway (Session ID: ceb75feceb12d6d48c61f91a4ebd641a).
+ERROR      - 2023-10-08 12:58:37,259 - client          : Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/client.py", line 441, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/rhythm/python/schwi.py/main.py", line 19, in on_ready
+    await bot.load_extension(f"cogs.{cog_file.name[:-3]}")
+  File "/home/rhythm/python/schwi.py/venv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1007, in load_extension
+    raise errors.ExtensionAlreadyLoaded(name)
+discord.ext.commands.errors.ExtensionAlreadyLoaded: Extension 'cogs.help' is already loaded.

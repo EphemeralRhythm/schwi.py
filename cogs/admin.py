@@ -30,6 +30,21 @@ class Admin(commands.Cog):
         await ctx.message.delete()
         await ctx.send(args)
 
+    @commands.command(name="get_xp")
+    async def get_xp(self, ctx):
+        builder = ""
+        message = await ctx.message.attachments[0].read()
+        message = message.decode("utf-8")
+        for line in message.split("\n"):
+            # print(line)
+            member = eval(line)
+            disc_member = ctx.message.guild.get_member(int(member["_id"]))
+            if not disc_member:
+                continue
+            xp = member["xp"]
+            builder += disc_member.name + ": " + str(xp) + "\n"
+        await ctx.send(builder)
+
     @commands.command(name="welcome")
     async def welcome(self, ctx, member: discord.Member):
         if ctx.author.id != 660929334969761792:
