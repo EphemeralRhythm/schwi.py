@@ -5,6 +5,13 @@ system, including fog of war, path-finding, combat, resources, building and more
 
 Powered by discord.py and MongoDB.
 
+- [Core Concept](#core-concept)
+- [Features](#features)
+- [Commands](#commands)
+- [Game Units](#game-units)
+- [Economy](#economy)
+- [Credit](#credit)
+
 ## Core Concept
 
 The game system is a medieval 4x game played entirely over discord,
