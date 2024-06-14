@@ -99,6 +99,19 @@ attack damage, attack recharge and health points.
 
 ![Combat Image](./screenshots/combat.webp)
 
+### Buildings
+
+Teams can use resources they gather from the map to construct new
+buildings. Buildings serve different purposes such as training
+new units or helping in gathering more resources and weapons.
+
+![Buildings Image](./screenshots/hq.png)
+
+Players can interact with buildings using commands.
+
+![Barracks Interaction](./screenshots/barrack_interaction.png)
+![Barracks Interaction](./screenshots/barracks_interaction2.png)
+
 ## Commands
 
 ### Map
